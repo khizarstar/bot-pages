@@ -1,122 +1,286 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Privacy Policy</title>
-<style>
-body{
-    font-family:Arial,sans-serif;
-    background:#0d1117;
-    color:#fff;
-    max-width:900px;
-    margin:40px auto;
-    padding:20px;
-    line-height:1.7;
-}
-h1,h2{
-    color:#00d4ff;
-}
-.card{
-    background:#161b22;
-    border-radius:10px;
-    padding:20px;
-    margin-bottom:20px;
-}
-small{
-    color:#b3b3b3;
-}
-ul{
-    padding-left:20px;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOVACORE — Privacy Policy</title>
+    <style>
+        :root {
+            --bg-primary: #1e1f22;
+            --bg-secondary: #2b2d31;
+            --bg-tertiary: #313338;
+            --blurple: #5865f2;
+            --blurple-hover: #4752c4;
+            --text-normal: #dbdee1;
+            --text-muted: #949ba4;
+            --text-link: #00a8fc;
+            --white: #ffffff;
+            --success: #23a55a;
+            --card-border: rgba(255, 255, 255, 0.05);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-normal);
+            font-family: 'gg sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding-bottom: 60px;
+        }
+
+        /* Fixed Banner Styling matching the ToS page fix */
+        .banner-container {
+            width: 100%;
+            height: 300px;
+            background-color: #23a55a; /* Fallback color */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(30, 31, 34, 1)), url('https://cdn.discordapp.com/attachments/1517530778135822563/1521415713678561390/IMG_20260630_122214_960.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1000px;
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        /* Header / Identity Section */
+        .header-card {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 30px;
+            margin-top: -60px;
+            position: relative;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .bot-icon {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            border: 6px solid var(--bg-secondary);
+            margin-top: -85px;
+            background-color: var(--bg-tertiary);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            object-fit: cover;
+        }
+
+        .bot-name {
+            font-size: 2.2rem;
+            color: var(--white);
+            margin-top: 15px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .bot-tagline {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin-top: 5px;
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn:active { transform: scale(0.98); }
+        .btn-blurple { background-color: var(--blurple); color: var(--white); }
+        .btn-blurple:hover { background-color: var(--blurple-hover); }
+        .btn-secondary { background-color: var(--bg-tertiary); color: var(--white); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .btn-secondary:hover { background-color: rgba(255, 255, 255, 0.05); }
+
+        /* Meta info */
+        .meta-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 40px 0 20px 0;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--bg-secondary);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .last-updated { color: var(--text-muted); font-size: 0.9rem; }
+        .badge-legal { background-color: rgba(35, 165, 90, 0.1); color: var(--success); padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; }
+
+        /* Main Legal Content */
+        .legal-content {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Clear Document Title */
+        .document-main-title {
+            color: var(--white);
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid var(--success);
+            padding-bottom: 10px;
+        }
+
+        .legal-section { margin-bottom: 35px; }
+        .legal-section:last-child { margin-bottom: 0; }
+        .legal-section h2 { color: var(--white); font-size: 1.4rem; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+        .legal-section h2::before { content: "•"; color: var(--success); font-size: 1.8rem; }
+        .legal-section p { color: var(--text-normal); margin-bottom: 15px; font-size: 1rem; text-align: justify; }
+        .legal-section ul { list-style-type: none; padding-left: 15px; }
+        .legal-section li { position: relative; padding-left: 20px; margin-bottom: 10px; color: var(--text-normal); }
+        .legal-section li::before { content: "›"; position: absolute; left: 0; color: var(--text-muted); font-size: 1.2rem; top: -2px; }
+
+        .notice-box {
+            background-color: rgba(35, 165, 90, 0.07);
+            border-left: 4px solid var(--success);
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 30px;
+        }
+        .notice-box p { margin-bottom: 0; font-style: italic; color: var(--text-normal); }
+
+        footer { margin-top: 60px; border-top: 1px solid var(--bg-secondary); padding-top: 30px; text-align: center; }
+        footer p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 8px; }
+        footer a { color: var(--text-link); text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+
+        @media (max-width: 768px) {
+            .banner-container { height: 200px; }
+            .header-card { padding: 20px; }
+            .legal-content { padding: 25px; }
+            .bot-name { font-size: 1.8rem; }
+            .document-main-title { font-size: 1.6rem; }
+            .meta-info { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
 </head>
 <body>
 
-<h1>🔒 Privacy Policy</h1>
+    <!-- Privacy Banner -->
+    <div class="banner-container"></div>
 
-<p><strong>Last Updated:</strong> June 30, 2026</p>
+    <div class="container">
+        <!-- Identity Header Card -->
+        <header class="header-card">
+            <img class="bot-icon" src="https://cdn.discordapp.com/attachments/1517530778135822563/1521434823858851951/file_00000000e1f471f59734788f5dc856b3.png" alt="NOVACORE">
+            <h1 class="bot-name">𝐍𝐎𝐕𝐀庫𝐑𝐄</h1>
+            <p class="bot-tagline">Your privacy matters. Learn how NOVACORE securely handles your server settings and integration details.</p>
+            
+            <div class="action-buttons">
+                <a href="https://discord.com/oauth2/authorize?client_id=1514950865960571001&permissions=8866461766385649&integration_type=0&scope=bot" target="_blank" class="btn btn-blurple">Invite Bot</a>
+                <a href="https://discord.gg/UxmPNvSSXp" target="_blank" class="btn btn-secondary">Support Server</a>
+            </div>
+        </header>
 
-<p>Thank you for using our Discord bot. Your privacy is important to us. This Privacy Policy explains what information may be collected, how it is used, and how we protect it.</p>
+        <!-- Meta Information Section -->
+        <div class="meta-info">
+            <div class="last-updated">Last Updated: <strong>June 30, 2026</strong></div>
+            <span class="badge-legal">Privacy Policy</span>
+        </div>
 
-<div class="card">
-<h2>📥 1. Information We Collect</h2>
-<ul>
-<li>Discord User IDs</li>
-<li>Discord Server (Guild) IDs</li>
-<li>Channel IDs</li>
-<li>Role IDs</li>
-<li>Message IDs</li>
-<li>Command usage and interaction data</li>
-<li>Configuration settings created by server administrators</li>
-<li>Moderation logs and audit data (if enabled)</li>
-</ul>
+        <!-- Main Document Body -->
+        <main class="legal-content">
+            
+            <!-- Clear Page Header Title -->
+            <h1 class="document-main-title">Privacy Policy</h1>
+            
+            <div class="notice-box">
+                <p>This Privacy Policy explicitly details what persistent information <strong>NOVACORE</strong> collects from your Discord guild ecosystem, how that specific data is maintained, and the clear rights you hold as a guild administrator or user.</p>
+            </div>
 
-<p>We do <strong>not</strong> collect your Discord password, email address, payment information, or other sensitive personal information.</p>
-</div>
+            <!-- Section 1 -->
+            <section class="legal-section">
+                <h2>1. Data We Collect & Scope</h2>
+                <p>To deliver advanced community moderation, automatic logging, leveling systems, and safety features, NOVACORE processes essential data objects received from the Discord API structure. This is strictly limited to:</p>
+                <ul>
+                    <li><strong>Discord Identifiers:</strong> User IDs, Server (Guild) IDs, Channel IDs, and Role IDs. These allow us to link permissions, configurations, and leveling profiles accurately.</li>
+                    <li><strong>Message Metadata:</strong> Message IDs are temporarily checked solely to execute features like Auto-moderation, anti-spam protections, and log configurations.</li>
+                    <li><strong>Configuration State:</strong> Custom welcoming logs, localized moderator warning points, and ticket system structures designed by server staff.</li>
+                </ul>
+                <p><strong>What We Do Not Collect:</strong> We never collect, cache, or ask for clear-text personal credentials, emails, authentication passwords, token arrays, or financial transaction details.</p>
+            </section>
 
-<div class="card">
-<h2>⚙️ 2. How We Use Your Information</h2>
-<ul>
-<li>Provide the bot's features and services.</li>
-<li>Store server-specific settings.</li>
-<li>Process commands and interactions.</li>
-<li>Improve performance, reliability, and security.</li>
-<li>Prevent abuse, spam, and unauthorized use.</li>
-<li>Troubleshoot technical issues.</li>
-</ul>
-</div>
+            <!-- Section 2 -->
+            <section class="legal-section">
+                <h2>2. How We Utilize Your Data</h2>
+                <p>The operational data objects processed by the bot backend are reserved exclusively to fuel functionality components. We process information to:</p>
+                <ul>
+                    <li>Provide automated moderation actions, logging data updates, and verify anti-nuke server triggers.</li>
+                    <li>Track localized member XP metrics to distribute engagement activity rewards.</li>
+                    <li>Troubleshoot technical faults, trace backend bugs, and mitigate widespread infrastructure abuse or spam networks.</li>
+                </ul>
+                <p>NOVACORE maintains a strict zero-monetization policy over user data. We do not sell, rent, license, or trade your server context or individual data to third-party advertising companies.</p>
+            </section>
 
-<div class="card">
-<h2>💾 3. Data Storage</h2>
-<p>Data is stored securely and only for as long as necessary to operate the bot and provide its features. Some data may be removed automatically when it is no longer required.</p>
-</div>
+            <!-- Section 3 -->
+            <section class="legal-section">
+                <h2>3. Security Architecture & Storage</h2>
+                <p>All server rules, configuration layouts, and user points are held securely using an industry-standard <strong>MongoDB</strong> database configuration. Infrastructure networks are deployed via <strong>Opticalink</strong> remote computing setups, applying standard firewall defenses to isolate sensitive cache elements.</p>
+                <p>While our technical layout implements strict safety measures to block malicious intrusion, please be reminded that no digital system or network data stream over the web can guarantee complete invulnerability.</p>
+            </section>
 
-<div class="card">
-<h2>🤝 4. Data Sharing</h2>
-<p>We do <strong>not</strong> sell, rent, or trade your information.</p>
+            <!-- Section 4 -->
+            <section class="legal-section">
+                <h2>4. Data Retention & Automatic Purging</h2>
+                <p>We believe in maintaining data minimization practices. If NOVACORE leaves a Discord server guild voluntarily or via kick/ban actions, all localized server logs, configuration setups, and data indexes are automatically earmarked for deletion within <strong>30 days</strong>.</p>
+                <p>Exceptions to this automated cleanup window apply only to specific data properties strictly required to maintain global bot safety, anti-abuse tracing, platform blacklist integrity, or to satisfy valid legal enforcement demands.</p>
+            </section>
 
-<p>Information may only be shared if:</p>
+            <!-- Section 5 -->
+            <section class="legal-section">
+                <h2>5. Data Deletion & Privacy Rights</h2>
+                <p>Server owners and standard individual users maintain full authority over their stored records. If you wish to manually initiate an immediate wipe of your user footprint or stored server metrics from our MongoDB system, you can contact our technical center directly.</p>
+                <p>Please transmit your official request along with your respective Discord snowflake IDs to our email inbox: <a href="mailto:contact.novacore.bot@gmail.com" style="color: var(--text-link); text-decoration: none;">contact.novacore.bot@gmail.com</a>. Requests are typically audited and permanently processed within 7 business days.</p>
+            </section>
 
-<ul>
-<li>Required by law.</li>
-<li>Necessary to protect the security, rights, or integrity of the bot or its users.</li>
-</ul>
-</div>
+        </main>
 
-<div class="card">
-<h2>🌐 5. Third-Party Services</h2>
-<p>Our bot operates through Discord and may use trusted third-party hosting or database providers. Your use of Discord is also subject to Discord's own policies.</p>
-</div>
-
-<div class="card">
-<h2>🗑️ 6. Data Deletion</h2>
-<p>If the bot leaves a server, some server-specific data may be deleted automatically. Server administrators may also request deletion of their server's stored data where applicable.</p>
-</div>
-
-<div class="card">
-<h2>🔐 7. Security</h2>
-<p>We implement reasonable security measures to help protect stored information. However, no online service can guarantee absolute security.</p>
-</div>
-
-<div class="card">
-<h2>👶 8. Children's Privacy</h2>
-<p>Our bot is not intended for individuals who do not meet Discord's minimum age requirement. We do not knowingly collect personal information from children.</p>
-</div>
-
-<div class="card">
-<h2>📝 9. Policy Changes</h2>
-<p>This Privacy Policy may be updated at any time. Continued use of the bot after changes become effective constitutes acceptance of the updated policy.</p>
-</div>
-
-<div class="card">
-<h2>📞 10. Contact</h2>
-<p>If you have any questions, concerns, or requests regarding this Privacy Policy or your data, please contact the bot's support server or the bot developer.</p>
-</div>
-
-<hr>
-
-<small>🛡️ By using this Discord bot, you acknowledge that you have read, understood, and agree to this Privacy Policy.</small>
+        <!-- Document Footer -->
+        <footer>
+            <p>&copy; 2026 <strong>NOVACORE</strong> &mdash; All Rights Reserved.</p>
+            <p>Developed by <strong>MUHAMMAD KHIZAR</strong> | Hosted via Opticalink</p>
+            <p>Review our Terms of Service on our <a href="https://discord.gg/UxmPNvSSXp" target="_blank">Support Community</a></p>
+        </footer>
+    </div>
 
 </body>
 </html>
