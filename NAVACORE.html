@@ -17,11 +17,13 @@
             --white: #ffffff;
             --card-border: rgba(138, 79, 255, 0.15);
             
-            /* Custom Legal Button Colors */
-            --btn-terms: #ff477e;
-            --btn-terms-hover: #e03669;
-            --btn-privacy: #00b4d8;
-            --btn-privacy-hover: #0096b1;
+            /* Legal Button Colors */
+            --btn-aqua: #00f5d4;
+            --btn-aqua-hover: #00bbf9;
+            --btn-aqua-text: #171226; 
+            
+            --btn-seagreen: #2ec4b6;
+            --btn-seagreen-hover: #20a498;
         }
 
         * {
@@ -127,11 +129,11 @@
         .btn-secondary { background-color: var(--bg-tertiary); color: var(--white); border: 1px solid rgba(255, 255, 255, 0.1); }
         .btn-secondary:hover { background-color: rgba(255, 255, 255, 0.05); }
 
-        /* Style variations for Legal compliance anchors */
-        .btn-terms { background-color: var(--btn-terms); color: var(--white); box-shadow: 0 4px 14px rgba(255, 71, 126, 0.2); }
-        .btn-terms:hover { background-color: var(--btn-terms-hover); }
-        .btn-privacy { background-color: var(--btn-privacy); color: var(--white); box-shadow: 0 4px 14px rgba(0, 180, 216, 0.2); }
-        .btn-privacy:hover { background-color: var(--btn-privacy-hover); }
+        /* Custom Aqua & Sea Green Button Definitions */
+        .btn-aqua { background-color: var(--btn-aqua); color: var(--btn-aqua-text); box-shadow: 0 4px 14px rgba(0, 245, 212, 0.2); }
+        .btn-aqua:hover { background-color: var(--btn-aqua-hover); color: var(--white); }
+        .btn-seagreen { background-color: var(--btn-seagreen); color: var(--white); box-shadow: 0 4px 14px rgba(46, 196, 182, 0.2); }
+        .btn-seagreen:hover { background-color: var(--btn-seagreen-hover); }
 
         /* Main Content Panel */
         .main-content {
@@ -196,6 +198,30 @@
             line-height: 1.4;
         }
 
+        /* Contact Details Layout */
+        .contact-box {
+            background-color: rgba(138, 79, 255, 0.05);
+            border: 1px dashed rgba(138, 79, 255, 0.3);
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .contact-email {
+            display: inline-block;
+            color: var(--btn-aqua);
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            margin-top: 8px;
+            transition: color 0.2s ease;
+        }
+
+        .contact-email:hover {
+            color: var(--white);
+        }
+
         .divider {
             height: 1px;
             background: linear-gradient(to right, transparent, var(--purple-accent), transparent);
@@ -238,7 +264,7 @@
             <h1 class="bot-name">NOVACORE</h1>
             <p class="bot-tagline">&#x2728; NovaCore – The All-in-One Discord Bot for Moderation, Fun, Utility & Community Growth</p>
             
-            <!-- Upgraded Badge reflecting Slash Commands functionality -->
+            <!-- Slash Commands Badge -->
             <div class="command-badge">
                 <span>⚡</span> Supports Slash Commands (/help)
             </div>
@@ -262,33 +288,40 @@
             <h2 class="section-title" style="margin-top: 35px;">Key Feature Suites</h2>
             <div class="features-grid">
                 <div class="feature-item">
-                    <div class="feature-header">🚀 Fast & Reliable</div>
-                    <div class="feature-desc">Optimized core performance ensuring zero-latency operations and maximum uptime execution.</div>
+                    <div class="feature-header">⚡ Fast & Reliable</div>
+                    <div class="feature-desc">Optimized backend performance infrastructure ensuring zero-latency actions, rapid response timings, and reliable uptime execution.</div>
                 </div>
                 <div class="feature-item">
-                    <div class="feature-header">🛡️ Moderation & Automod</div>
-                    <div class="feature-desc">Robust auto-moderation guardrails, text filters, and quick-action admin enforcement toolkits.</div>
+                    <div class="feature-header">🛡️ Advanced Moderation</div>
+                    <div class="feature-desc">Take complete control with customizable auto-moderation guardrails, explicit word filters, spam protection, and simple logging frameworks.</div>
                 </div>
                 <div class="feature-item">
                     <div class="feature-header">🎉 Giveaways & Events</div>
-                    <div class="feature-desc">Effortlessly launch, track, and roll interactive custom contests directly within channels.</div>
+                    <div class="feature-desc">Keep your members engaged by setting up, running, and drawing automated milestone giveaway matches directly within your server.</div>
                 </div>
                 <div class="feature-item">
-                    <div class="feature-header">📈 Leveling System</div>
-                    <div class="feature-desc">Drive consistent text and voice interaction using automated XP mechanics and role rewards.</div>
+                    <div class="feature-header">📈 Leveling & XP Rewards</div>
+                    <div class="feature-desc">Drive chat interaction using dynamic text and voice level calculations paired with fully automated milestone role awards.</div>
                 </div>
                 <div class="feature-item">
                     <div class="feature-header">🎮 Fun & Entertainment</div>
-                    <div class="feature-desc">Keep chat active with an assortment of interactive minigames, image queries, and casual profiles.</div>
+                    <div class="feature-desc">Enliven your community text channels using mini-games, customizable user interactive profiles, media actions, and casual commands.</div>
                 </div>
                 <div class="feature-item">
                     <div class="feature-header">⚙️ Utility & Infrastructure</div>
-                    <div class="feature-desc">Advanced server management commands, detailed audit insights, and diagnostic configurations.</div>
+                    <div class="feature-desc">Equipped with critical member details, detailed audit insights, custom embed management, and rapid support center configurations.</div>
                 </div>
                 <div class="feature-item" style="grid-column: 1 / -1;">
-                    <div class="feature-header">🔄 Active Support & Regular Updates</div>
-                    <div class="feature-desc">Consistently maintained to align with updated Discord functionalities, backend architectural refinements, and immediate user feature suggestions.</div>
+                    <div class="feature-header">🔄 Active Support & Ongoing Updates</div>
+                    <div class="feature-desc">Maintained consistently to integrate modern Discord API systems, implement feature requests from server owners, and deploy performance improvements.</div>
                 </div>
+            </div>
+
+            <!-- Contact Section -->
+            <h2 class="section-title" style="margin-top: 40px;">✉️ Contact Us</h2>
+            <div class="contact-box">
+                <p>Have operational questions, business inquiries, or need immediate tech support? Drop us a line anytime via email:</p>
+                <a href="mailto:contact.novacore.bot@gmail.com" class="contact-email">contact.novacore.bot@gmail.com</a>
             </div>
 
             <hr class="divider">
@@ -297,8 +330,8 @@
             <div class="legal-buttons-wrapper">
                 <p>Review our framework guidelines and compliance regulations:</p>
                 <div class="action-buttons">
-                    <a href="https://khizarstar.github.io/bot-pages/terms.html" target="_blank" class="btn btn-terms">📜 Terms of Service</a>
-                    <a href="https://khizarstar.github.io/bot-pages/privacy.html" target="_blank" class="btn btn-privacy">🔒 Privacy Policy</a>
+                    <a href="https://khizarstar.github.io/bot-pages/terms.html" target="_blank" class="btn btn-aqua">📜 Terms of Service</a>
+                    <a href="https://khizarstar.github.io/bot-pages/privacy.html" target="_blank" class="btn btn-seagreen">🔒 Privacy Policy</a>
                 </div>
             </div>
         </main>
