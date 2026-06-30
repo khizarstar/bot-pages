@@ -158,6 +158,202 @@
             text-align: justify;
         }
 
+        /* Navigation Box for Sub-Pages */
+        .navigation-hub-box {
+            background: linear-gradient(145deg, var(--bg-tertiary), rgba(45, 36, 74, 0.3));
+            border: 1px dashed rgba(138, 79, 255, 0.25);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            margin: 35px 0;
+        }
+
+        .navigation-hub-box p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+
+        .nav-buttons-container {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Contact Box */
+        .contact-box {
+            background-color: rgba(138, 79, 255, 0.05);
+            border: 1px solid rgba(138, 79, 255, 0.15);
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .contact-email {
+            display: inline-block;
+            color: var(--btn-aqua);
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            margin-top: 8px;
+            transition: color 0.2s ease;
+        }
+
+        .contact-email:hover { color: var(--white); }
+
+        .divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--purple-accent), transparent);
+            margin: 40px 0;
+            border: none;
+        }
+
+        .legal-buttons-wrapper {
+            text-align: center;
+        }
+
+        .legal-buttons-wrapper p {
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        footer {
+            margin-top: 60px;
+            text-align: center;
+        }
+        footer p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 8px; }
+        footer a { color: #8a4fff; text-decoration: none; font-weight: 600; }
+        footer a:hover { text-decoration: underline; }
+
+        @media (max-width: 768px) {
+            body { padding: 30px 0; }
+            .header-card, .main-content { padding: 25px 20px; }
+            .bot-name { font-size: 2rem; }
+            .nav-buttons-container { flex-direction: column; gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Identity Structure -->
+        <header class="header-card">
+            <img class="bot-icon" src="bot.png" alt="NOVACORE Logo">
+            <h1 class="bot-name">NOVACORE</h1>
+            <p class="bot-tagline">&#x2728; NovaCore – The All-in-One Discord Bot for Moderation, Fun, Utility & Community Growth</p>
+            
+            <div class="command-badge">
+                <span>⚡</span> Supports Slash Commands (/help)
+            </div>
+            
+            <div class="action-buttons">
+                <a href="https://discord.com/oauth2/authorize?client_id=1514950865960571001&permissions=8866461766385649&integration_type=0&scope=bot" target="_blank" class="btn btn-blurple">Invite Bot</a>
+                <a href="https://discord.gg/UxmPNvSSXp" target="_blank" class="btn btn-secondary">Support Server</a>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <h2 class="section-title">About NOVACORE</h2>
+            <p class="description-text">
+                NovaCore is a powerful and reliable Discord bot designed to help communities grow, stay organized, and have fun. Featuring advanced moderation tools, customizable automod, giveaways, leveling, utility commands, entertainment features, and much more, NovaCore provides everything your server needs in one place.
+            </p>
+            <p class="description-text">
+                Built with performance and simplicity in mind, NovaCore delivers a smooth experience for both server owners and members. Whether you're managing a small community or a large network, NovaCore helps automate tasks, improve engagement, and create a better Discord experience for everyone.
+            </p>
+
+            <!-- Navigation Hub Container -->
+            <div class="navigation-hub-box">
+                <p>Explore our complete documentation frameworks and available systems:</p>
+                <div class="nav-buttons-container">
+                    <a href="https://khizarstar.github.io/bot-pages/features.html" class="btn btn-blurple" style="box-shadow: 0 4px 14px rgba(138, 79, 255, 0.2); background-color: var(--purple-accent);">⚙️ View Core Features</a>
+                    <a href="https://khizarstar.github.io/bot-pages/commands.html" class="btn btn-secondary" style="border: 1px solid rgba(138, 79, 255, 0.4); background-color: rgba(138, 79, 255, 0.1);">📜 View Core Commands</a>
+                </div>
+            </div>
+
+            <!-- Contact Section -->
+            <h2 class="section-title" style="margin-top: 40px;">✉️ Contact Information</h2>
+            <div class="contact-box">
+                <p>Have operational questions, technical concerns, or explicit system feedback? Contact developers directly:</p>
+                <a href="mailto:contact.novacore.bot@gmail.com" class="contact-email">contact.novacore.bot@gmail.com</a>
+            </div>
+
+            <hr class="divider">
+
+            <!-- Compliance Policy Anchors -->
+            <div class="legal-buttons-wrapper">
+                <p>Review our framework guidelines and compliance regulations:</p>
+                <div class="action-buttons">
+                    <a href="https://khizarstar.github.io/bot-pages/terms.html" target="_blank" class="btn btn-aqua">📜 Terms of Service</a>
+                    <a href="https://khizarstar.github.io/bot-pages/privacy.html" target="_blank" class="btn btn-seagreen">🔒 Privacy Policy</a>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 <strong>NOVACORE</strong> &mdash; All Rights Reserved.</p>
+            <p>Designed and Authored by <strong>MUHAMMAD KHIZAR</strong> | Hosted via Opticalink</p>
+        </footer>
+    </div>
+
+</body>
+</html>
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn:active { transform: scale(0.98); }
+        .btn-blurple { background-color: var(--blurple); color: var(--white); box-shadow: 0 4px 14px rgba(88, 101, 242, 0.3); }
+        .btn-blurple:hover { background-color: #4752c4; }
+        .btn-secondary { background-color: var(--bg-tertiary); color: var(--white); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .btn-secondary:hover { background-color: rgba(255, 255, 255, 0.05); }
+
+        /* Color Overrides */
+        .btn-aqua { background-color: var(--btn-aqua) !important; color: var(--btn-aqua-text) !important; box-shadow: 0 4px 14px rgba(0, 245, 212, 0.2); }
+        .btn-aqua:hover { background-color: var(--btn-aqua-hover) !important; color: var(--white) !important; }
+        .btn-seagreen { background-color: var(--btn-seagreen) !important; color: var(--white) !important; box-shadow: 0 4px 14px rgba(46, 196, 182, 0.2); }
+        .btn-seagreen:hover { background-color: var(--btn-seagreen-hover) !important; }
+
+        /* Main Content Panel */
+        .main-content {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .section-title {
+            color: var(--white);
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        p.description-text {
+            color: var(--text-normal);
+            font-size: 1.05rem;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
         /* Feature Button Container */
         .feature-navigation-box {
             background: linear-gradient(145deg, var(--bg-tertiary), rgba(45, 36, 74, 0.3));
