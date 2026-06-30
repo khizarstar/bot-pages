@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOVACORE — The All-in-One Discord Bot</title>
+    <style>
+        :root {
+            --bg-primary: #171226; /* Dark Purple Slate */
+            --bg-secondary: #211a36; /* Deep Purple Card */
+            --bg-tertiary: #2d244a; /* Lighter Purple accents */
+            --blurple: #5865f2;
+            --purple-accent: #8a4fff;
+            --purple-hover: #733bdf;
+            --text-normal: #e3e1e8;
+            --text-muted: #a6a2b5;
+            --white: #ffffff;
+            --card-border: rgba(138, 79, 255, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            background-image: radial-gradient(circle at top right, rgba(138, 79, 255, 0.12), transparent 40%),
+                              radial-gradient(circle at bottom left, rgba(88, 101, 242, 0.08), transparent 50%);
+            color: var(--text-normal);
+            font-family: 'gg sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 60px 0;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        /* Profile/Header Area */
+        .header-card {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+            margin-bottom: 40px;
+        }
+
+        .bot-icon {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid var(--purple-accent);
+            background-color: var(--bg-tertiary);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        .bot-name {
+            font-size: 2.5rem;
+            color: var(--white);
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .bot-tagline {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            max-width: 700px;
+            margin: 10px auto 0 auto;
+        }
+
+        .prefix-badge {
+            display: inline-block;
+            background-color: rgba(138, 79, 255, 0.2);
+            color: #c0a3ff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-top: 15px;
+            border: 1px solid rgba(138, 79, 255, 0.3);
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 14px 28px;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn:active { transform: scale(0.98); }
+        .btn-blurple { background-color: var(--blurple); color: var(--white); box-shadow: 0 4px 14px rgba(88, 101, 242, 0.3); }
+        .btn-blurple:hover { background-color: #4752c4; }
+        .btn-purple { background-color: var(--purple-accent); color: var(--white); box-shadow: 0 4px 14px rgba(138, 79, 255, 0.3); }
+        .btn-purple:hover { background-color: var(--purple-hover); }
+        .btn-secondary { background-color: var(--bg-tertiary); color: var(--white); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .btn-secondary:hover { background-color: rgba(255, 255, 255, 0.05); }
+
+        /* Main Content Grid */
+        .main-content {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .section-title {
+            color: var(--white);
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        p.description-text {
+            color: var(--text-normal);
+            font-size: 1.05rem;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        /* Features List Grid Layout */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .feature-item {
+            background-color: var(--bg-tertiary);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            padding: 15px 20px;
+            font-size: 1.05rem;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 500;
+        }
+
+        .divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--purple-accent), transparent);
+            margin: 40px 0;
+            border: none;
+        }
+
+        .legal-buttons-wrapper {
+            text-align: center;
+        }
+
+        .legal-buttons-wrapper p {
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        footer {
+            margin-top: 60px;
+            text-align: center;
+        }
+        footer p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 8px; }
+        footer a { color: #8a4fff; text-decoration: none; font-weight: 600; }
+        footer a:hover { text-decoration: underline; }
+
+        @media (max-width: 768px) {
+            body { padding: 30px 0; }
+            .header-card, .main-content { padding: 25px 20px; }
+            .bot-name { font-size: 2rem; }
+            .features-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Identity Section -->
+        <header class="header-card">
+            <img class="bot-icon" src="bot.png" alt="NOVACORE Logo">
+            <h1 class="bot-name">NOVACORE</h1>
+            <p class="bot-tagline">&#x2728; NovaCore – The All-in-One Discord Bot for Moderation, Fun, Utility & Community Growth</p>
+            <div class="prefix-badge">Prefix: Nc!</div>
+            
+            <div class="action-buttons">
+                <a href="https://discord.com/oauth2/authorize?client_id=1514950865960571001&permissions=8866461766385649&integration_type=0&scope=bot" target="_blank" class="btn btn-blurple">Invite Bot</a>
+                <a href="https://discord.gg/UxmPNvSSXp" target="_blank" class="btn btn-secondary">Support Server</a>
+            </div>
+        </header>
+
+        <!-- Main Info / Features Section -->
+        <main class="main-content">
+            <h2 class="section-title">About NOVACORE</h2>
+            <p class="description-text">
+                NovaCore is a powerful and reliable Discord bot designed to help communities grow, stay organized, and have fun. Featuring advanced moderation tools, customizable automod, giveaways, leveling, utility commands, entertainment features, and much more, NovaCore provides everything your server needs in one place.
+            </p>
+            <p class="description-text">
+                Built with performance and simplicity in mind, NovaCore delivers a smooth experience for both server owners and members. Whether you're managing a small community or a large network, NovaCore helps automate tasks, improve engagement, and create a better Discord experience for everyone.
+            </p>
+
+            <h2 class="section-title" style="margin-top: 35px;">Key Features</h2>
+            <div class="features-grid">
+                <div class="feature-item">🚀 Fast & Reliable</div>
+                <div class="feature-item">🛡️ Moderation & Automod</div>
+                <div class="feature-item">🎉 Giveaways & Events</div>
+                <div class="feature-item">📈 Leveling System</div>
+                <div class="feature-item">🎮 Fun & Entertainment</div>
+                <div class="feature-item">⚙️ Utility & Server Management</div>
+                <div class="feature-item">🔄 Active Support & Regular Updates</div>
+            </div>
+
+            <hr class="divider">
+
+            <!-- Compliance Policy Anchors -->
+            <div class="legal-buttons-wrapper">
+                <p>Review our framework guidelines and compliance regulations:</p>
+                <div class="action-buttons">
+                    <a href="https://khizarstar.github.io/bot-pages/terms.html" target="_blank" class="btn btn-purple">Terms of Service</a>
+                    <a href="https://khizarstar.github.io/bot-pages/privacy.html" target="_blank" class="btn btn-secondary">Privacy Policy</a>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 <strong>NOVACORE</strong> &mdash; All Rights Reserved.</p>
+            <p>Designed and Authored by <strong>MUHAMMAD KHIZAR</strong> | Hosted via Opticalink</p>
+        </footer>
+    </div>
+
+</body>
+</html>
