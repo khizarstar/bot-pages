@@ -16,6 +16,12 @@
             --text-muted: #a6a2b5;
             --white: #ffffff;
             --card-border: rgba(138, 79, 255, 0.15);
+            
+            /* New Dedicated Button Colors for Legal Links */
+            --btn-terms: #ff477e;
+            --btn-terms-hover: #e03669;
+            --btn-privacy: #00b4d8;
+            --btn-privacy-hover: #0096b1;
         }
 
         * {
@@ -113,10 +119,14 @@
         .btn:active { transform: scale(0.98); }
         .btn-blurple { background-color: var(--blurple); color: var(--white); box-shadow: 0 4px 14px rgba(88, 101, 242, 0.3); }
         .btn-blurple:hover { background-color: #4752c4; }
-        .btn-purple { background-color: var(--purple-accent); color: var(--white); box-shadow: 0 4px 14px rgba(138, 79, 255, 0.3); }
-        .btn-purple:hover { background-color: var(--purple-hover); }
         .btn-secondary { background-color: var(--bg-tertiary); color: var(--white); border: 1px solid rgba(255, 255, 255, 0.1); }
         .btn-secondary:hover { background-color: rgba(255, 255, 255, 0.05); }
+
+        /* Custom Specific Styles for Legal Buttons */
+        .btn-terms { background-color: var(--btn-terms); color: var(--white); box-shadow: 0 4px 14px rgba(255, 71, 126, 0.2); }
+        .btn-terms:hover { background-color: var(--btn-terms-hover); }
+        .btn-privacy { background-color: var(--btn-privacy); color: var(--white); box-shadow: 0 4px 14px rgba(0, 180, 216, 0.2); }
+        .btn-privacy:hover { background-color: var(--btn-privacy-hover); }
 
         /* Main Content Grid */
         .main-content {
@@ -201,12 +211,11 @@
 <body>
 
     <div class="container">
-        <!-- Identity Section -->
         <header class="header-card">
             <img class="bot-icon" src="bot.png" alt="NOVACORE Logo">
             <h1 class="bot-name">NOVACORE</h1>
             <p class="bot-tagline">&#x2728; NovaCore – The All-in-One Discord Bot for Moderation, Fun, Utility & Community Growth</p>
-            <div class="prefix-badge">Prefix: Nc!</div>
+            <div class="prefix-badge">Prefix: !</div>
             
             <div class="action-buttons">
                 <a href="https://discord.com/oauth2/authorize?client_id=1514950865960571001&permissions=8866461766385649&integration_type=0&scope=bot" target="_blank" class="btn btn-blurple">Invite Bot</a>
@@ -214,7 +223,6 @@
             </div>
         </header>
 
-        <!-- Main Info / Features Section -->
         <main class="main-content">
             <h2 class="section-title">About NOVACORE</h2>
             <p class="description-text">
@@ -237,12 +245,11 @@
 
             <hr class="divider">
 
-            <!-- Compliance Policy Anchors -->
             <div class="legal-buttons-wrapper">
                 <p>Review our framework guidelines and compliance regulations:</p>
                 <div class="action-buttons">
-                    <a href="https://khizarstar.github.io/bot-pages/terms.html" target="_blank" class="btn btn-purple">Terms of Service</a>
-                    <a href="https://khizarstar.github.io/bot-pages/privacy.html" target="_blank" class="btn btn-secondary">Privacy Policy</a>
+                    <a href="https://khizarstar.github.io/bot-pages/terms.html" target="_blank" class="btn btn-terms">Terms of Service</a>
+                    <a href="https://khizarstar.github.io/bot-pages/privacy.html" target="_blank" class="btn btn-privacy">Privacy Policy</a>
                 </div>
             </div>
         </main>
