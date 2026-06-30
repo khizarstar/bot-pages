@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NOVACORE — Core Features Documentation</title>
+    <title>NOVACORE — Automated Moderation & Security Systems</title>
     <style>
         :root {
             --bg-primary: #171226; /* Dark Purple Slate */
@@ -45,10 +45,10 @@
         }
 
         .main-title {
-            font-size: 2.8rem;
+            font-size: 2.6rem;
             color: var(--white);
             font-weight: 800;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             text-transform: uppercase;
             background: linear-gradient(to right, var(--white), var(--aqua));
             -webkit-background-clip: text;
@@ -105,6 +105,109 @@
             margin-top: 15px;
         }
 
+        .feature-body li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 12px;
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        .feature-body li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--aqua);
+            font-weight: bold;
+        }
+
+        .highlight {
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 30px 0; }
+            .feature-card { padding: 25px; }
+            .main-title { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- Document Heading focused purely on Moderation/Security -->
+        <div class="main-title-box">
+            <h1 class="main-title">Moderation & Security Systems</h1>
+            <p class="main-subtitle">Detailed documentation covering enforcement rules, automated moderation patterns, and audit logs.</p>
+        </div>
+
+        <!-- Deep Dive Features Stack -->
+        <div class="features-stack">
+
+            <!-- MODULE 1: ADVANCED MODERATION & AUTOMOD -->
+            <section class="feature-card">
+                <div class="feature-header">🛡️ Enterprise Guard Automod & Moderation Matrix</div>
+                <div class="feature-body">
+                    <p>
+                        The core protective suite within NovaCore gives community owners absolute, microscopic control over text communication, member verification, and network security policies. The system works as an intelligent barrier by running advanced AutoMod evaluation layers on incoming messages. Using highly flexible custom regular expression (Regex) pattern mapping, administrators can build deep text filters capable of flagging, blocking, and removing complex spam strings, hidden invite configurations, character bypass attempts, and malicious external web references before they touch the public channel view.
+                    </p>
+                    <p>
+                        Beyond word filters, NovaCore implements a complete logging system that captures structural user context during punishments. When an infraction occurs, the bot creates records containing precise channel states, message attachments, and user tags, routing them to isolated administration logs. Moderation commands—ranging from soft-mutes, warning escalations, timed timeouts, kicks, and hard server bans—integrate perfectly with modern Discord role architectures. This provides your staff team with sharp, customizable enforcement options to handle hostile situations cleanly while maintaining complete records for transparency.
+                    </p>
+                    <ul>
+                        <li><span class="highlight">Regex Pattern Engineering:</span> Construct advanced phrase definitions to stop alternate spellings, character spaces, and tracking leaks.</li>
+                        <li><span class="highlight">Dynamic Infraction Escalation:</span> Automatically increase punishments from warnings to temporary mutes if users repeat violations.</li>
+                        <li><span class="highlight">Comprehensive Context Logs:</span> Save explicit channel state snapshots, deleted content strings, and unique IDs inside audit logs.</li>
+                        <li><span class="highlight">Thread & Invite Control:</span> Block unauthorized server ads, rogue link sharing, and toxic mass-mentions across channels instantly.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- MODULE 2: SYSTEM UTILITY & AUDITING -->
+            <section class="feature-card">
+                <div class="feature-header">⚙️ System Utility, Auditing & Support Center Control</div>
+                <div class="feature-body">
+                    <p>
+                        Beyond real-time security actions, a top-tier server needs deep administrative tools to inspect operational data and assist members. NovaCore provides a robust utility suite that gives your management team complete visibility into your community's backend mechanics. Administrators can extract structural metadata profiles for specific user accounts, audit exact creation logs, analyze role hierarchy orders, and review server configuration profiles with simple slash commands. This eliminates the guesswork from server management, allowing your staff to solve access issues and verify user identities instantly.
+                    </p>
+                    <p>
+                        The utility system also includes an advanced, interactive custom embed builder and support manager. This allows administrators to design clean, professional informational layouts for server rules, announcements, and channel directories without touching a line of code. These embeds update in real-time, giving your server a polished look. From tracking invite codes to auditing background role structures, NovaCore provides the complete administrative toolkit necessary to run an organized, enterprise-level community platform.
+                    </p>
+                    <ul>
+                        <li><span class="highlight">Deep Auditing Lookup:</span> View creation dates, precise snowflake IDs, and permission maps for any account instantly.</li>
+                        <li><span class="highlight">Interactive Embed Architecture:</span> Build, edit, and post clean text embeds with custom colors, footers, and fields.</li>
+                        <li><span class="highlight">Hierarchy Diagnostic Checks:</span> Run real-time scans on role permissions to discover and fix security vulnerabilities.</li>
+                        <li><span class="highlight">Invite Code Analytics:</span> Track exactly which invite links new members are using to measure your external growth campaigns.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- MODULE 3: CORE SYSTEM SPEED & UPTIME -->
+            <section class="feature-card">
+                <div class="feature-header">🚀 Core System Speed & Infrastructure Uptime</div>
+                <div class="feature-body">
+                    <p>
+                        NovaCore is built upon a high-performance backend architecture specifically designed to support heavy traffic loads without sacrificing execution times. In modern community networks, bot lag can cripple interactions, stall moderation actions, and lead to poor user experiences. NovaCore circumvents these issues completely by utilizing optimized asynchronous event handling, memory-efficient data structures, and highly optimized database querying paths. Every single slash command response is prioritized through high-throughput cloud networks, resulting in sub-millisecond processing pipelines that make the bot feel entirely instantaneous to your staff and players.
+                    </p>
+                    <p>
+                        Uptime stability is guaranteed through redundant failover setups hosted on elite enterprise-grade network nodes. Should an unexpected system exception or server migration take place, automatic container recovery parameters boot instantly to maintain persistent processing state. This means your configuration rules, database connections, and background timers remain protected against service blockages. Whether processing huge community events with hundreds of active text interactions or executing massive operations during peak hours, NovaCore runs silently and rapidly behind the scenes without breaking a sweat.
+                    </p>
+                    <ul>
+                        <li><span class="highlight">Asynchronous Core Processing:</span> Eliminates linear line blockages, meaning separate channel processes execute simultaneously.</li>
+                        <li><span class="highlight">High-Throughput Routing:</span> Tailored to process complex data queries across cloud nodes under 50 milliseconds.</li>
+                        <li><span class="highlight">Redundant Containers:</span> Instant auto-healing server parameters ensure the system recovers gracefully during node updates.</li>
+                        <li><span class="highlight">Efficient Caching Architecture:</span> Frequently accessed server metadata rules are held locally in fast caches to minimize external storage roundtrips.</li>
+                    </ul>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+</body>
+</html>
         .feature-body li {
             position: relative;
             padding-left: 25px;
