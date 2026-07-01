@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOVACORE — Commands</title>
+    <style>
+        :root {
+            --bg-dark: #0f0c1b;
+            --bg-gradient: radial-gradient(circle at top, #1c1437 0%, #0c0819 70%);
+            --card-bg: #16122c;
+            --blurple: #5865f2;
+            --blurple-hover: #4752c4;
+            --text-main: #ffffff;
+            --text-muted: #8e87b2;
+            --cyan: #3fe2c3;
+            --input-bg: #211b3d;
+            --border-line: rgba(255, 255, 255, 0.05);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: var(--bg-dark);
+            background: var(--bg-gradient);
+            color: var(--text-main);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: 40px;
+        }
+
+        /* Top Navbar Structure */
+        .navbar {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            margin-bottom: 40px;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            font-size: 1.1rem;
+        }
+
+        .nav-brand img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--cyan);
+        }
+
+        .nav-links a.active {
+            border-bottom: 2px solid var(--cyan);
+            padding-bottom: 4px;
+        }
+
+        .nav-invite-btn {
+            background-color: var(--blurple);
+            color: white;
+            text-decoration: none;
+            padding: 8px 18px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: background-color 0.2s;
+        }
+
+        .nav-invite-btn:hover {
+            background-color: var(--blurple-hover);
+        }
+
+        /* Main Center Layout Container */
+        .main-container {
+            max-width: 900px;
+            width: 90%;
+            text-align: center;
+            z-index: 2;
+        }
+
+        /* Banner Header Box */
+        .title-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-line);
+            border-radius: 12px;
+            padding: 35px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .title-card h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .title-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Interactive Dashboard Block */
+        .dashboard-box {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-line);
+            border-radius: 12px;
+            padding: 35px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            text-align: left;
+        }
+
+        /* Search Engine Custom Element */
+        .search-container {
+            width: 100%;
+            margin-bottom: 25px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 14px 20px;
+            background-color: var(--input-bg);
+            border: 1px solid var(--border-line);
+            border-radius: 8px;
+            color: var(--text-main);
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .search-input:focus {
+            border-color: var(--blurple);
+        }
+
+        /* Responsive Table Modules */
+        .table-responsive {
+            overflow-x: auto;
+            width: 100%;
+        }
+
+        .cmd-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .cmd-table th {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 15px;
+            border-bottom: 2px solid var(--border-line);
+            font-weight: 700;
+        }
+
+        .cmd-table td {
+            padding: 16px 15px;
+            border-bottom: 1px solid var(--border-line);
+            font-size: 0.95rem;
+            vertical-align: middle;
+        }
+
+        .cmd-table tr:hover td {
+            background-color: rgba(255, 255, 255, 0.01);
+        }
+
+        .cmd-name {
+            color: #7289da;
+            text-decoration: none;
+            font-weight: 600;
+            font-family: monospace;
+            font-size: 1rem;
+        }
+
+        .cmd-badge {
+            display: inline-block;
+            background-color: var(--input-bg);
+            color: var(--text-main);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .cmd-desc {
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        footer {
+            width: 100%;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(255, 255, 255, 0.02);
+        }
+
+        footer p { margin-bottom: 8px; }
+        footer strong { color: white; }
+        footer a { color: var(--cyan); text-decoration: none; margin: 0 5px; }
+        footer a:hover { text-decoration: underline; }
+
+        @media (max-width: 768px) {
+            .navbar { flex-direction: column; gap: 15px; text-align: center; }
+            .dashboard-box { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Navigation Bar Layout -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <img src="bot.png" alt="NOVACORE">
+            <span>NOVACORE</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="novacore.html">Home</a></li>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="commands.html" class="active">Commands</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+        </ul>
+        <a href="https://discord.com/oauth2/authorize?client_id=1514950865960571001&permissions=8866461766385649&integration_type=0&scope=bot" target="_blank" class="nav-invite-btn">Invite Bot</a>
+    </nav>
+
+    <div class="main-container">
+        <!-- Title Header Component -->
+        <div class="title-card">
+            <h1>Bot Commands</h1>
+            <p>Explore and search the comprehensive array of configurations and modules available for NOVACORE.</p>
+        </div>
+
+        <!-- Central Display System -->
+        <div class="dashboard-box">
+            <div class="search-container">
+                <input type="text" id="searchBar" class="search-input" onkeyup="searchCommands()" placeholder="Search for commands or categories...">
+            </div>
+
+            <div class="table-responsive">
+                <table class="cmd-table" id="commandTable">
+                    <thead>
+                        <tr>
+                            <th style="width: 25%">Command</th>
+                            <th style="width: 25%">Category</th>
+                            <th style="width: 50%">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Core / Profile Registry Entries -->
+                        <tr>
+                            <td><span class="cmd-name">/help</span></td>
+                            <td><span class="cmd-badge">General</span></td>
+                            <td class="cmd-desc">Displays the global interaction menu and active support directories.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="cmd-name">Bot profile</span></td>
+                            <td><span class="cmd-badge">Utility</span></td>
+                            <td class="cmd-desc">View explicit integration metrics, statistics, and platform status uptime indicators.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="cmd-name">Userinfo</span></td>
+                            <td><span class="cmd-badge">Utility</span></td>
+                            <td class="cmd-desc">Gathers detailed tracking data, account age, and target guild role weights.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="cmd-name">/profile</span></td>
+                            <td><span class="cmd-badge">Utility</span></td>
+                            <td class="cmd-desc">Launches your global user dashboard overlay displaying system status arrays.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="cmd-name">/serverstats</span></td>
+                            <td><span class="cmd-badge">Utility</span></td>
+                            <td class="cmd-desc">Displays active counters and data tallies for server operational oversight.</td>
+                        </tr>
+                        <!-- Moderation Engine Module -->
+                        <tr>
+                            <td><span class="cmd-name">/warn</span></td>
+                            <td><span class="cmd-badge">Moderation</span></td>
+                            <td class="cmd-desc">Issues a formal infrastructure log penalty infraction to a targeted member.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="cmd-name">Unwarn</span></td>
+                            <td><span class="cmd-badge">Moderation</span></td>
+                            <td class="cmd-desc">Revokes active strike counts or log warnings from an explicit target identity.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="cmd-name">Warnings</span></td>
+                            <td><span class="cmd-badge">Moderation</span></td>
+                            <td class="cmd-desc">Queries the MongoDB cluster layer to fetch historical user index records.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="cmd-name">/moderation</span></td>
+                            <td><span class="cmd-badge">Moderation</span></td>
+                            <td class="cmd-desc">Provides an expansive dashboard overview for managing server discipline systems.</td>
+                        </tr>
+                        <!-- Core Settings & Infrastructure -->
+                        <tr>
+                            <td><span class="cmd-name">/automod</span></td>
+                            <td><span class="cmd-badge">Security</span></td>
+                            <td class="cmd-desc">Enforces custom structural regex strings to block text pattern abuse instantly.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="cmd-name">/autosetup</span></td>
+                            <td><span class="cmd-badge">Configuration</span></td>
+                            <td class="cmd-desc">Deploys standard channel directories and security hierarchies automatically.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="cmd-name">/config</span></td>
+                            <td><span class="cmd-badge">Configuration</span></td>
+                            <td class="cmd-desc">Modifies foundational variable points and core processing nodes for the guild.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="cmd-name">/setup</span></td>
+                            <td><span class="cmd-badge">Configuration</span></td>
+                            <td class="cmd-desc">Initializes custom step-by-step logic wizards for granular environment configuration.</td>
+                        </tr>
+                        <!-- Functional Interaction Features -->
+                        <tr>
+                            <td><span class="cmd-name">/activities</span></td>
+                            <td><span class="cmd-badge">Engagement</span></td>
+                            <td class="cmd-desc">Launches shared Discord activities and gaming portals straight inside vocal links.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="cmd-name">/afk</span></td>
+                            <td><span class="cmd-badge">General</span></td>
+                            <td class="cmd-desc">Sets up automatic responder notifications detailing temporary network absence status.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="cmd-name">/announcement</span></td>
+                            <td><span class="cmd-badge">Utility</span></td>
+                            <td class="cmd-desc">Pushes highly stylized system embeds into target announcement boards securely.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="cmd-name">/birthdays</span></td>
+                            <td><span class="cmd-badge">Engagement</span></td>
+                            <td class="cmd-desc">Tracks community birth schedules and sets up anniversary alarm indicators.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="cmd-name">/bot</span></td>
+                            <td><span class="cmd-badge">General</span></td>
+                            <td class="cmd-desc">Outputs technical framework summaries and legal directory connections.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="cmd-name">/casino</span></td>
+                            <td><span class="cmd-badge">Economy</span></td>
+                            <td class="cmd-desc">Spins up simulation card and rolling mechanisms linked directly to active wallet levels.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="cmd-name">/custom-commands</span></td>
+                            <td><span class="cmd-badge">Configuration</span></td>
+                            <td class="cmd-desc">Programs custom trigger terms with responsive automated string answer values.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="cmd-name">/developers</span></td>
+                            <td><span class="cmd-badge">General</span></td>
+                            <td class="cmd-desc">Credits development staff teams and engineering structures behind the machine.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="cmd-name">/economy</span></td>
+                            <td><span class="cmd-badge">Economy</span></td>
+                            <td class="cmd-desc">Handles basic currency balances, trading loops, and inventory indexes.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="cmd-name">/embed</span></td>
+                            <td><span class="cmd-badge">Utility</span></td>
+                            <td class="cmd-desc">Launches building components to program highly tailored webhook embed objects.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="cmd-name">/family</span></td>
+                            <td><span class="cmd-badge">Engagement</span></td>
+                            <td class="cmd-desc">Allows simulated social relationship networks and interactive community chains.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="cmd-name">/fun</span></td>
+                            <td><span class="cmd-badge">Engagement</span></td>
+                            <td class="cmd-desc">Contains text parsers, minigames, and interactive casual content algorithms.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="cmd-name">/games</span></td>
+                            <td><span class="cmd-badge">Engagement</span></td>
+                            <td class="cmd-desc">Launches comprehensive matching session games directly inside server threads.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="cmd-name">/giveaway</span></td>
+                            <td><span class="cmd-badge">Engagement</span></td>
+                            <td class="cmd-desc">Runs scheduled loot events with programmatic prize distribution logic.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="cmd-name">/guild</span></td>
+                            <td><span class="cmd-badge">Utility</span></td>
+                            <td class="cmd-desc">Retrieves organizational metrics and structural statistics regarding the ecosystem.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="cmd-name">/images</span></td>
+                            <td><span class="cmd-badge">Utility</span></td>
+                            <td class="cmd-desc">Accesses external formatting libraries for processing image generation queries.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="cmd-name">/invite</span></td>
+                            <td><span class="cmd-badge">General</span></td>
+                            <td class="cmd-desc">Outputs authorization configurations to provision bot addition loops instantly.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="cmd-name">/invites</span></td>
+                            <td><span class="cmd-badge">Utility</span></td>
+                            <td class="cmd-desc">Audits user code invite creation lines to trace tracking origin trends precisely.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="cmd-name">/levels</span></td>
+                            <td><span class="cmd-badge">Economy</span></td>
+                            <td class="cmd-desc">Displays leaderboard positions tracking chat experience point allocations.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="cmd-name">/message</span></td>
+                            <td><span class="cmd-badge">Utility</span></td>
+                            <td class="cmd-desc">Processes structured messaging operations via direct text parameters.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="cmd-name">/messages</span></td>
+                            <td><span class="cmd-badge">Utility</span></td>
+                            <td class="cmd-desc">Counts active text contributions made by users across text layout frames.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="cmd-name">/music</span></td>
+                            <td><span class="cmd-badge">Entertainment</span></td>
+                            <td class="cmd-desc">Binds to voice lines to play clear, lag-free live streaming musical paths.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="cmd-name">/notepad</span></td>
+                            <td><span class="cmd-badge">Utility</span></td>
+                            <td class="cmd-desc">Saves personalized developer or user memo keys safely across global instances.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="cmd-name">/radio</span></td>
+                            <td><span class="cmd-badge">Entertainment</span></td>
+                            <td class="cmd-desc">Hooks live internet radio broadcasts into dedicated active sound regions.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="cmd-name">/reactionroles</span></td>
+                            <td><span class="cmd-badge">Automation</span></td>
+                            <td class="cmd-desc">Binds role assignment parameters to precise interaction emoji selections.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="cmd-name">/report</span></td>
+                            <td><span class="cmd-badge">General</span></td>
+                            <td class="cmd-desc">Routes system exploit detections or user rule infractions to staff panels.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="cmd-name">/search</span></td>
+                            <td><span class="cmd-badge">Utility</span></td>
+                            <td class="cmd-desc">Queries external search nodes for processing relevant platform information indexes.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="cmd-name">/soundboard</span></td>
+                            <td><span class="cmd-badge">Entertainment</span></td>
+                            <td class="cmd-desc">Triggers soundboard track snippets directly through active channel audio pipelines.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="cmd-name">/stickymessages</span></td>
+                            <td><span class="cmd-badge">Automation</span></td>
+                            <td class="cmd-desc">Pins important warning matrices to the absolute bottom of chosen active text channels.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="cmd-name">/suggestions</span></td>
+                            <td><span class="cmd-badge">General</span></td>
+                            <td class="cmd-desc">Opens stylized feature feedback voting boxes for general public vetting.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="cmd-name">/thanks</span></td>
+                            <td><span class="cmd-badge">General</span></td>
+                            <td class="cmd-desc">Expresses systematic recognition metrics toward helpful ecosystem participants.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="cmd-name">/tickets</span></td>
+                            <td><span class="cmd-badge">Automation</span></td>
+                            <td class="cmd-desc">Opens an automated portal structure to safely track developer and support tasks.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="cmd-name">/tools</span></td>
+                            <td><span class="cmd-badge">Utility</span></td>
+                            <td class="cmd-desc">Runs various administrative and system helper diagnostic tool macros.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="cmd-name">/voice</span></td>
+                            <td><span class="cmd-badge">Utility</span></td>
+                            <td class="cmd-desc">Manages configurations, limits, and options for dynamic vocal channels.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 <strong>NOVACORE</strong> &mdash; All Rights Reserved.</p>
+            <p>Designed and Authored by <strong>MUHAMMAD KHIZAR</strong> | Hosted via Opticalink</p>
+            <p><a href="terms.html">Terms of Service</a> &bull; <a href="privacy.html">Privacy Policy</a></p>
+        </footer>
+    </div>
+
+    <!-- Live Search Logic Matrix -->
+    <script>
+        function searchCommands() {
+            var input = document.getElementById("searchBar");
+            var filter = input.value.toUpperCase();
+            var table = document.getElementById("commandTable");
+            var tr = table.getElementsByTagName("tr");
+
+            for (var i = 1; i < tr.length; i++) {
+                var tdName = tr[i].getElementsByTagName("td")[0];
+                var tdCat = tr[i].getElementsByTagName("td")[1];
+                if (tdName || tdCat) {
+                    var textName = tdName.textContent || tdName.innerText;
+                    var textCat = tdCat.textContent || tdCat.innerText;
+                    if (textName.toUpperCase().indexOf(filter) > -1 || textCat.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
+

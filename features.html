@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOVACORE — Advanced Features & Systems</title>
+    <style>
+        :root {
+            --bg-primary: #0f0c1b;
+            --bg-gradient: radial-gradient(circle at top inside, #1c1437 0%, #0c0819 70%);
+            --bg-secondary: #16122c;
+            --bg-tertiary: #211b3d;
+            --purple-accent: #8a4fff;
+            --text-normal: #e3e1e8;
+            --text-muted: #8e87b2;
+            --white: #ffffff;
+            --card-border: rgba(255, 255, 255, 0.05);
+            --aqua: #3fe2c3;
+            --blurple: #5865f2;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            background-image: var(--bg-gradient);
+            color: var(--text-normal);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            padding-top: 120px;
+            padding-bottom: 60px;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        /* Fixed Professional Navigation Bar */
+        .main-navbar {
+            background-color: rgba(22, 18, 44, 0.9);
+            border-bottom: 1px solid var(--card-border);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(12px);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            width: 90%;
+            margin: 0 auto;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-brand {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--white);
+            text-decoration: none;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .brand-logo-img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: color 0.2s ease;
+            padding: 6px 0;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--aqua);
+        }
+        
+        .nav-link.active {
+            border-bottom: 2px solid var(--aqua);
+            padding-bottom: 4px;
+        }
+
+        .btn-invite {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 18px;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.85rem;
+            background-color: var(--blurple);
+            color: var(--white);
+            transition: background-color 0.2s ease;
+            cursor: pointer;
+            border: none;
+        }
+        .btn-invite:hover {
+            background-color: #4752c4;
+        }
+
+        /* Title Box Styling */
+        .main-title-box {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .main-title {
+            font-size: 2.2rem;
+            color: var(--white);
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Rearranged Grid Layout System */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .feature-card {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.25s ease, border-color 0.25s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .feature-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.3rem;
+            color: var(--white);
+            font-weight: 700;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .feature-body p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            text-align: justify;
+            line-height: 1.6;
+        }
+
+        .feature-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Make larger core systems span 2 columns for symmetry layout */
+        .feature-card.featured-system {
+            grid-column: span 2;
+            background: linear-gradient(145deg, #16122c 0%, #1e183a 100%);
+        }
+
+        footer {
+            margin-top: 80px;
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.02);
+        }
+        footer p { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 8px; }
+        footer strong { color: var(--white); }
+
+        @media (max-width: 992px) {
+            .features-grid { grid-template-columns: 1fr; }
+            .feature-card.featured-system { grid-column: span 1; }
+        }
+
+        @media (max-width: 768px) {
+            body { padding-top: 100px; }
+            .nav-container { flex-direction: column; height: auto; padding: 15px 0; gap: 15px; }
+            .nav-menu { gap: 15px; }
+            .main-title { font-size: 1.8rem; }
+            .feature-card { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Fixed Navigation Menu Header -->
+    <header class="main-navbar">
+        <div class="nav-container">
+            <a href="novacore.html" class="nav-brand">
+                <img src="bot.png" alt="NovaCore Logo" class="brand-logo-img"> NOVACORE
+            </a>
+            <ul class="nav-menu">
+                <li><a href="novacore.html" class="nav-link">Home</a></li>
+                <li><a href="features.html" class="nav-link active">Features</a></li>
+                <li><a href="commands.html" class="nav-link">Commands</a></li>
+                <li><a href="faq.html" class="nav-link">FAQ</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="https://discord.com/oauth2/authorize?client_id=1514950865960571001&permissions=8866461766385649&integration_type=0&scope=bot" class="btn-invite" target="_blank">Invite Bot</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <div class="main-title-box">
+            <h1 class="main-title">NOVACORE FEATURES</h1>
+        </div>
+
+        <div class="features-grid">
+
+            <!-- Welcome System (Full Width Highlight) -->
+            <section class="feature-card featured-system">
+                <div class="feature-header">👋 Welcome System</div>
+                <div class="feature-body">
+                    <p>
+                        The greeting module within NovaCore completely revolutionizes how new users experience your digital server network upon entry. Instead of sending dry and plain textual entries that are easily ignored by arrivals, this infrastructure processes highly specialized graphic rendering pipelines. It instantly deploys beautiful onboarding canvases containing customized user banners, profile graphics, and structured server parameters directly to specified landing channels. Server managers retain total creative command over variable placeholders, allowing the generation of text arrays that automatically state exact membership counts, unique account names, and precise server identifiers in real-time.
+                    </p>
+                    <p>
+                        Beyond visual aesthetics, the onboarding workflow bridges the gap between raw traffic arrival and complete profile engagement. It automatically handles localized information delivery by dispatching direct private messages detailing community layouts, major rule listings, and primary verification vectors. This eliminates confusion for beginners and structures their arrival path perfectly, resulting in lower churn rates and higher engagement levels. By immediately making arrivals feel validated and properly informed, your server builds a premium brand image right from the first interaction block.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Logging System -->
+            <section class="feature-card">
+                <div class="feature-header">📜 Logging System</div>
+                <div class="feature-body">
+                    <p>
+                        Operational awareness requires microscopic visibility across every active text grid, and NovaCore provides this through an advanced, enterprise-grade recording network. The application operates as an internal auditing mirror, silently tracing structural modifications, chat deletions, and permission adjustments across every category block. When a user removes content strings or edits an active statement, the logging machine creates secure database snapshots highlighting exact original scripts, modified parameters, channel values, and associated user identifiers within dedicated logging outputs.
+                    </p>
+                    <p>
+                        This infrastructure expands deep into server administration tracking by logging manual role assignments, channel creations, voice connection histories, and structural changes. This ensures that server managers maintain an absolute chronological audit trail to quickly track internal security compromises or rogue staff behavior. Every log layout is clearly organized with distinct color codings, unique database timestamps, and explicit user flags. This makes it incredibly easy for administrative teams to manage disputes, verify claims, and keep an orderly community environment.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Tickets System -->
+            <section class="feature-card">
+                <div class="feature-header">🎫 Tickets System</div>
+                <div class="feature-body">
+                    <p>
+                        Handling customer concerns or structural community reports through random direct messages can easily clutter operations and leak sensitive data. NovaCore fixes this issue by embedding an interactive, button-driven customer support framework directly into your text channels. Users can initialize private support channels with a single click, instantly spawning an isolated text space with custom permissions that restrict visibility to the ticket creator and assigned support agents. This keeps help inquiries organized and securely out of public view.
+                    </p>
+                    <p>
+                        The backend ticket system handles administrative tasks automatically by applying organized channel naming protocols, claiming tags, and logging status transcripts. Staff teams can claim tickets using interactive components, log internal notes, and close cases smoothly when issues are resolved. Once a support thread is finalized, NovaCore generates complete text files containing every chat log, file upload, and interaction timestamp, archiving everything cleanly for future security audits.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Anti-Spam Protection -->
+            <section class="feature-card">
+                <div class="feature-header">🛑 Anti-Spam Protection</div>
+                <div class="feature-body">
+                    <p>
+                        Fast-moving chat attacks, script macros, and emoji flooding can ruin conversations and overwhelm public channels in seconds. NovaCore features an advanced defense monitor that reviews user message speeds in real-time to stop spam instantly. The bot evaluates the exact frequency of incoming text arrays, flag conditions, repeated text strings, and mass mention attempts. If a profile crosses your server's custom threshold, NovaCore steps in immediately to delete the content and mute the offending account before the spam can disrupt the community.
+                    </p>
+                    <p>
+                        This defense module operates on an adjustable rate-limiting grid, letting you set different protection levels for standard chat zones and fast-paced announcement feeds. It tracks repeated rule violations and automatically increases punishments from small warnings to server-wide communication mutes. By keeping text channel flows clean and clear of automated spam walls, NovaCore ensures your members can chat in a comfortable space without constant distractions from malicious users or bot accounts.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Anti-Nuke Security -->
+            <section class="feature-card">
+                <div class="feature-header">☣️ Anti-Nuke Security</div>
+                <div class="feature-body">
+                    <p>
+                        Rogue administrators or compromised staff credentials can completely destroy a community server in minutes through malicious mass-deletions and role purges. NovaCore stops these catastrophic attacks with a powerful anti-nuke defense system that monitors structural changes 24/7. The security engine tracks internal events like rapid channel deletions, sudden role removals, mass member kicks, or excessive ban creations. If a staff account executes an abnormal number of destructive actions within a set time window, NovaCore identifies it as an attack and immediately strips the account's permissions.
+                    </p>
+                    <p>
+                        This high-level protection layer acts as a reliable fail-safe, locking down server resources during a security crisis to preserve your channels and setup. It bypasses standard permission levels to protect your server's core hierarchy, notifying owners immediately through encrypted alerts. By adding this reliable safety net, NovaCore gives community owners complete peace of mind, knowing their hard work is fully protected against inner staff betrayals and credential leaks.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Moderation Suite (Full Width Highlight) -->
+            <section class="feature-card featured-system">
+                <div class="feature-header">🔨 Moderation Suite</div>
+                <div class="feature-body">
+                    <p>
+                        The human-driven moderation system within NovaCore gives your staff team absolute, microscopic control over server safety and member enforcement. It features a complete collection of standard administrative tools including `/warn`, `/timeout`, `/kick`, and `/ban` commands, all running on a high-speed database layout. Staff members can execute lightning-fast enforcement actions, set precise expiration times for mutes, and attach detailed infraction notes to ensure complete operational transparency during member disputes.
+                    </p>
+                    <p>
+                        The core advantage of this suite is its intelligent profile logging backend, which saves every punishment directly to a member's permanent data file. When staff audit an account, NovaCore displays a complete chronological breakdown of past warnings, active bans, and previous notes. This allows your team to easily spot repeat offenders and make informed enforcement decisions. It turns messy, uncoordinated staff actions into a polished, professional moderation workflow that keeps your community safe and organized.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Reaction Roles -->
+            <section class="feature-card">
+                <div class="feature-header">🎭 Reaction Roles</div>
+                <div class="feature-body">
+                    <p>
+                        Manually managing hundreds of member preferences or regional notification settings can be a massive chore for your administration team. NovaCore automates this completely through an efficient identity matrix that binds server roles directly to clickable emojis and buttons. Administrators can design sleek, information-rich selection dashboards where users simply toggle their own server roles. This is ideal for letting members pick game interests, opt-in to ping announcements, select languages, or unlock hidden categories on their own terms.
+                    </p>
+                    <p>
+                        The engine handles clicks instantly using highly optimized interaction listeners, adding or removing roles in milliseconds without causing any server role delay. It fully respects your server's role hierarchy and works smoothly with multi-choice limits or single-choice selection rules. This prevents members from selecting conflicting preferences, giving server owners tight control over user access. This layout cleans up cluttered landing menus and turns role distribution into a fast, completely self-managed experience.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Auto Moderation -->
+            <section class="feature-card">
+                <div class="feature-header">🤖 Auto Moderation</div>
+                <div class="feature-body">
+                    <p>
+                        Keeping public channels safe around the clock requires an automated monitoring tool that works even when your staff team is offline. NovaCore delivers this with an advanced AutoMod engine that runs text checks on every incoming message string. Using custom regular expression (Regex) pattern mapping, administrators can build deep word filters capable of blocking complex slurs, hidden invite links, character bypass formatting, and phishing URLs before they ever show up in your channels.
+                    </p>
+                    <p>
+                        The auto mod filter works intelligently behind the scenes, scanning message contents without slowing down chat speeds or causing connection lag. It scans file attachments, checks link safety metadata, and blocks mass emoji strings to keep text feeds readable. When a violation occurs, the bot cleanly deletes the message, issues a system warning, and logs the action to staff audit channels. This maintains a respectful, clean community atmosphere automatically without requiring constant staff supervision.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Levelling System -->
+            <section class="feature-card">
+                <div class="feature-header">📊 Levelling System</div>
+                <div class="feature-body">
+                    <p>
+                        An active, talkative user base is the lifeblood of any growing Discord server, and NovaCore rewards this organic activity with a highly gamified leveling engine. The bot monitors text chat patterns and voice connection times, converting daily participation into experience points (XP). To prevent users from gaming the system by typing nonsense or spamming single letters, NovaCore uses an anti-exploit buffer. This enforces a custom cooldown between valid XP rewards to ensure natural conversations are rewarded over automated macros.
+                    </p>
+                    <p>
+                        The standout feature of this module is its fully automated Role Rewards integration system. As community members level up, NovaCore matches their XP points against your custom milestones, automatically granting new achievement roles and cleaning up old ones. This creates a fun progression system that gives users a sense of status within the community. Members can also show off their rankings with beautiful profile cards that display leaderboard standing, avatars, and custom progression metrics.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Giveaway Wizards -->
+            <section class="feature-card">
+                <div class="feature-header">🎉 Giveaway Wizards</div>
+                <div class="feature-body">
+                    <p>
+                        Hosting community raffles and product giveaways is an excellent way to boost engagement, and NovaCore makes this process entirely seamless. Instead of using clunky third-party tools that fail during heavy traffic, NovaCore handles giveaways internally using streamlined interface components. Server hosts can configure promotional draws with custom countdown timers, precise winner counts, and specific entry requirements, giving your users a fun reason to stay active.
+                    </p>
+                    <p>
+                        The drawing engine utilizes mathematically fair random selection scripts to pick winners, removing any chance of staff bias or manipulation. Once a giveaway concludes, NovaCore edits the main announcement message, mentions the winners, and tracks the claim status. If a winner fails to follow claim instructions within a given time frame, staff can use simple rerun commands to draw a new winner from the original entry pool instantly.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Birthday Tracking -->
+            <section class="feature-card">
+                <div class="feature-header">🎂 Birthday Tracking</div>
+                <div class="feature-body">
+                    <p>
+                        Building close social bonds among community members is key to long-term user retention, and NovaCore assists this with an automated Birthday Tracking module. Users can securely log their birth dates into the bot's database via simple commands, which are protected by strict privacy settings to prevent data leaks. The scheduling engine runs daily checks across your user base, identifying matching birthdays and deploying beautiful celebration messages automatically.
+                    </p>
+                    <p>
+                        These automated announcements are fully customizable, allowing administrators to choose specific celebration channels, assign temporary birthday roles, and customize embed themes to fit the server's branding. This creates an engaging, friendly chat environment where members feel recognized on their special day. By automating these simple personal touches, NovaCore helps transform cold text channels into a welcoming, tight-knit digital community.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Core Administration & Setup -->
+            <section class="feature-card">
+                <div class="feature-header">⚙️ Core Administration & Setup</div>
+                <div class="feature-body">
+                    <p>
+                        Managing a multi-featured bot doesn't have to mean dealing with messy text files or complicated command keys. NovaCore includes an intuitive, centralized configuration framework built for server owners. Through clear dashboards like `/setup` and `/config`, managers can easily toggle features on or off, set logging channels, and update bot prefixes. This keeps your system setup organized and easy to maintain without requiring any programming knowledge.
+                    </p>
+                    <p>
+                        The backend code processes configuration updates instantly, changing bot permissions and channel settings on the fly without needing server reboots. It includes validation routines that check configuration inputs before saving them, preventing errors that could break your setups. This reliable, user-friendly setup framework helps administrators optimize their bot settings quickly, giving them complete control over their community assets.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Analytics & Statistics -->
+            <section class="feature-card">
+                <div class="feature-header">📊 Analytics & Statistics</div>
+                <div class="feature-body">
+                    <p>
+                        Making smart management choices requires accurate, real-time data on how your community is behaving. NovaCore provides this through an advanced internal tracking engine that gathers network performance metrics continuously. The bot tracks message volumes, voice connection hours, peak activity times, and member growth trends, organizing this data into clear, readable charts and summary cards for server owners.
+                    </p>
+                    <p>
+                        This module lets you easily evaluate user engagement trends, check the success of recent server events, and identify quiet hours that need extra engagement activities. All analytics are stored securely in local database tables, protecting your community's data privacy from external scraping networks. These data summaries take the guesswork out of server management, giving community owners the clear insights needed to build effective growth strategies.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Support Services -->
+            <section class="feature-card">
+                <div class="feature-header">🤝 Support Services</div>
+                <div class="feature-body">
+                    <p>
+                        Helping users navigate a busy community layout can take up a lot of your staff's valuable time. NovaCore features a helpful suite of support commands designed to answer user questions automatically. Through dynamic help indexes, detailed feature breakdowns, and automated status menus, members can quickly find command examples and usage rules without needing to contact a staff member directly.
+                    </p>
+                    <p>
+                        The support system features clean, paginated menus and dropdown controls that keep channel information organized and readable. Users can look up channel descriptions, view active server roles, and check available bot features through clear, easy-to-use layouts. This helps users solve common problems independently, keeping your public chat feeds focused on normal conversations while lowering the overall workload on your staff team.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Virtual Economy -->
+            <section class="feature-card">
+                <div class="feature-header">💰 Virtual Economy</div>
+                <div class="feature-body">
+                    <p>
+                        NovaCore adds an immersive virtual banking layer to your text chats with a complete, fully customizable server economy engine. Users can safely earn digital currency balances by chatting in channels, completing server tasks, or participating in community events. They can track their funds using secure commands, transfer money safely to friends, and use their balances to buy unique items from an in-server storefront.
+                    </p>
+                    <p>
+                        Server administrators have complete control over this economic ecosystem, letting them set custom daily payouts, adjust item prices, and manage money supply limits to prevent inflation. The shop interface supports unique server rewards like premium colored roles, collectible badges, and custom command triggers. This provides a fun, rewarding activity loop that encourages members to stick around and participate in your community long-term.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Casino & Games -->
+            <section class="feature-card">
+                <div class="feature-header">🎰 Casino & Games</div>
+                <div class="feature-body">
+                    <p>
+                        To complement the virtual economy engine, NovaCore features a fun, secure virtual gambling center built directly into your server's text channels. Members can wager their hard-earned economy tokens on classic luck-based games like virtual slots, coin flips, high-low cards, and blackjack simulations. This gives users an entertaining way to risk their balances and compete for top spots on the server leaderboard.
+                    </p>
+                    <p>
+                        The gaming engine runs on fair random-number algorithms that mirror real casino probabilities while protecting your server from exploit attempts or macro manipulation. Every game operates cleanly within interactive text embeds and response buttons to avoid cluttering your main chat feeds. This creates a fun, competitive mini-economy within your channels, keeping members entertained and interacting with the bot for hours.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Entertainment & Fun -->
+            <section class="feature-card">
+                <div class="feature-header">🎮 Entertainment & Fun</div>
+                <div class="feature-body">
+                    <p>
+                        When public conversations slow down during quiet hours, NovaCore keeps chat lively with a rich selection of casual text commands and fun social modules. Members can easily pull up pop-culture trivia, generate funny memes, trigger lighthearted text macros, and request quick interactive jokes. This breaks the ice and gets users talking, keeping your chat channels active and dynamic throughout the day.
+                    </p>
+                    <p>
+                        Every fun module is carefully optimized to keep chat clean, using interactive buttons and dropdown selections to prevent text spamming. Administrators can easily restrict these casual entertainment features to specific channels, keeping main chat zones clear for serious discussions. This all-in-one entertainment approach saves you from bloating your server list with single-purpose utility bots while providing a smooth, fun experience for your members.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Integrated Activities -->
+            <section class="feature-card">
+                <div class="feature-header">📺 Integrated Activities</div>
+                <div class="feature-body">
+                    <p>
+                        NovaCore makes it easier than ever to hang out with friends online by launching platform-native multiplayer games and shared media streams directly inside your voice channels. Members can open voice lounges and launch co-op games, collaborative sketchpads, or shared video players with a single click. This transforms standard voice chats into interactive spaces where users can play and watch content together.
+                    </p>
+                    <p>
+                        This module utilizes advanced voice integration layers to load applications smoothly inside the Discord client, removing the need for external screensharing tools or third-party web links. It handles connections cleanly for groups of any size, providing a reliable space for community game nights or casual watch parties. This brings your community members closer together, turning your server into their preferred digital hangout space.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Audio & Music Framework -->
+            <section class="feature-card">
+                <div class="feature-header">🎵 Audio & Music Framework</div>
+                <div class="feature-body">
+                    <p>
+                        Transform your server's standard voice rooms into premium, high-fidelity music lounges using NovaCore's advanced audio streaming framework. Members can request music tracks from popular online sources, manage live song queues, and view detailed track information embeds. The system delivers crystal-clear audio tracking with sub-millisecond sync, ensuring your community enjoys an excellent listening experience.
+                    </p>
+                    <p>
+                        The audio controller includes a full set of interactive playback buttons, letting users pause tracks, skip songs, shuffle playlists, and adjust volumes easily right from the chat container. It includes advanced queue management features like duplicate song filtering, automated playlist loading, and save configurations. This provides a reliable, high-performance music space that keeps your voice lounges active and full of life.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Live Radio Streaming -->
+            <section class="feature-card">
+                <div class="feature-header">📻 Live Radio Streaming</div>
+                <div class="feature-body">
+                    <p>
+                        If you want continuous background music without needing to manage a constant stream of track requests, NovaCore's live radio feature is the perfect solution. The bot connects live digital radio broadcast feeds directly into your assigned voice channels, providing 24/7 high-quality audio streams. It is an ideal addition for creating relaxed study lounges, gaming lobbies, or ambient background spaces.
+                    </p>
+                    <p>
+                        The streaming framework connects directly to a wide variety of global internet radio stations, covering music genres from lo-fi beats to electronic dance tracks and classic rock. It manages connections automatically, reconnecting smoothly if a stream drops to ensure your background music never stops. This provides a hands-off audio solution for server owners, keeping voice lounges inviting and populated around the cloud.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Social Connections & Family -->
+            <section class="feature-card">
+                <div class="feature-header">👪 Social Connections & Family</div>
+                <div class="feature-body">
+                    <p>
+                        NovaCore includes an entertaining social simulation module that helps members build friendly connections and unique relationships within your server. Users can mimic virtual marriages, adopt server friends into fun family trees, and display their custom relationships through interactive user profile cards. This adds a lighthearted, personal layer to daily chat interactions.
+                    </p>
+                    <p>
+                        The backend database ensures all relationship pairings are completely consensual, requiring both users to approve proposals or adoption requests via interactive buttons before updating their profiles. Members can easily look up family trees, view relationship histories, and earn fun relationship achievements over time. This fun feature drives chat activity up and helps transform casual visitors into long-term community friends.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Personal Memory Cache (Notepad) -->
+            <section class="feature-card">
+                <div class="feature-header">📝 Personal Memory Cache (Notepad)</div>
+                <div class="feature-body">
+                    <p>
+                        NovaCore provides a highly convenient, secure personal text workspace for every user in your server. Operating as an isolated private memory cache, the notepad module lets members quickly save text strings, store useful website links, log personal reminders, or draft announcements directly within the bot's interface. This eliminates the need to constantly switch to external note apps.
+                    </p>
+                    <p>
+                        Every notebook entry is protected by strict database security rules, ensuring that a user's saved notes can only be accessed, edited, or deleted by the original account owner. Users can view their notes through clean paginated menus, search for specific keywords, and output formatted text blocks easily. This practical utility tool adds real value to your server, giving members a private text workspace they can access anytime.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Growth & Engagement Tracking -->
+            <section class="feature-card">
+                <div class="feature-header">📈 Growth & Engagement Tracking</div>
+                <div class="feature-body">
+                    <p>
+                        Building a large, successful server network requires a clear understanding of your community's long-term growth and retention trends. NovaCore includes built-in tracking scripts that record member retention numbers, evaluate invite link conversions, and track general chat activity over time. This gives you a clear view of your server's health and development trends.
+                    </p>
+                    <p>
+                        The bot compiles these metrics into clear informational summaries, making it simple to track seasonal member growth and identify which community events are driving the most activity. All data is managed cleanly inside local storage tables, protecting your community metrics from public web scraping networks. This reliable tracking suite takes the guesswork out of server management, helping you optimize expansion plans with real metrics.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Invite Audit Systems -->
+            <section class="feature-card">
+                <div class="feature-header">🔗 Invite Audit Systems</div>
+                <div class="feature-body">
+                    <p>
+                        To run successful marketing campaigns and measure your external growth, you need to know exactly how new members are finding your server. NovaCore's invite audit module solves this by monitoring background server entry codes every time a new account joins. The bot updates invite tracking metrics instantly, matching arrivals against active link codes to identify exactly who generated the invite and where it was posted.
+                    </p>
+                    <p>
+                        This module provides clear entry logs that display the creator of the invite code, total link use counts, and custom tracking channels. This data is perfect for measuring the performance of staff advertising campaigns, tracking partner growth rewards, and identifying high-performing promotional links. By providing precise invite data, NovaCore helps you focus your marketing efforts on the recruitment channels that yield the best results.
+                    </p>
+                </div>
+            </section>
+
+            <!-- System Information & Diagnostics (Full Width Symmetrical End) -->
+            <section class="feature-card featured-system">
+                <div class="feature-header">ℹ️ System Information & Diagnostics</div>
+                <div class="feature-body">
+                    <p>
+                        NovaCore believes in complete operational transparency, which is why it includes a comprehensive diagnostic module that displays the bot's real-time physical hosting performance. Members and staff can look up active database connection response speeds, check data processing ping times, and review background hosting runtimes. This confirms that the bot's infrastructure is running smoothly and efficiently.
+                    </p>
+                    <p>
+                        The diagnostic commands compile detailed hardware updates including active library version rules, operating memory use, and cluster node allocations into clean informational layouts. This helps server administrators verify system stability during heavy chat traffic, check connection speeds, and confirm overall bot performance. This open transparency gives server owners complete confidence that NovaCore's hosting infrastructure is fully optimized to support high-volume community management.
+                    </p>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 <strong>NOVACORE</strong> &mdash; All Rights Reserved.</p>
+        <p>Designed and Authored by <strong>MUHAMMAD KHIZAR</strong> | Hosted via Opticalink</p>
+    </footer>
+
+</body>
+</html>
+
