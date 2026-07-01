@@ -6,7 +6,6 @@
         <lastUpdated>2026-06-30</lastUpdated>
         <assets>
             <banner>terms.png</banner>
-            <icon>bot.png</icon>
         </assets>
     </metadata>
     <content>
@@ -23,7 +22,6 @@
             --bg-secondary: #2b2d31;
             --bg-tertiary: #313338;
             --blurple: #5865f2;
-            --blurple-hover: #4752c4;
             --text-normal: #dbdee1;
             --text-muted: #949ba4;
             --text-link: #00a8fc;
@@ -66,76 +64,6 @@
             width: 90%;
             margin: 0 auto;
         }
-
-        /* Header Card Component */
-        .header-card {
-            background-color: var(--bg-secondary);
-            border: 1px solid var(--card-border);
-            border-radius: 12px;
-            padding: 30px;
-            margin-top: -60px;
-            position: relative;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            z-index: 2;
-        }
-
-        /* Bot Icon Layout using bot.png */
-        .bot-icon {
-            width: 110px;
-            height: 110px;
-            border-radius: 50%;
-            border: 6px solid var(--bg-secondary);
-            margin-top: -85px;
-            background-color: var(--bg-tertiary);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            object-fit: cover;
-        }
-
-        .bot-name {
-            font-size: 2.2rem;
-            color: var(--white);
-            margin-top: 15px;
-            font-weight: 800;
-            letter-spacing: 1px;
-        }
-
-        .bot-tagline {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin-top: 5px;
-        }
-
-        .action-buttons {
-            display: flex;
-            gap: 15px;
-            margin-top: 25px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            padding: 12px 24px;
-            border-radius: 4px;
-            font-weight: 600;
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: background-color 0.2s ease, transform 0.1s ease;
-            cursor: pointer;
-            border: none;
-        }
-
-        .btn:active { transform: scale(0.98); }
-        .btn-blurple { background-color: var(--blurple); color: var(--white); }
-        .btn-blurple:hover { background-color: var(--blurple-hover); }
-        .btn-secondary { background-color: var(--bg-tertiary); color: var(--white); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .btn-secondary:hover { background-color: rgba(255, 255, 255, 0.05); }
 
         .meta-info {
             display: flex;
@@ -196,9 +124,7 @@
 
         @media (max-width: 768px) {
             .banner-container { height: 200px; }
-            .header-card { padding: 20px; }
             .legal-content { padding: 25px; }
-            .bot-name { font-size: 1.8rem; }
             .document-main-title { font-size: 1.6rem; }
             .meta-info { flex-direction: column; align-items: flex-start; }
         }
@@ -210,18 +136,7 @@
     <div class="banner-container"></div>
 
     <div class="container">
-        <!-- Main Identity Structure -->
-        <header class="header-card">
-            <img class="bot-icon" src="bot.png" alt="NOVACORE">
-            <h1 class="bot-name">𝐍𝐎𝐕𝐀庫𝐑𝐄</h1>
-            <p class="bot-tagline">A powerful Discord multipurpose bot designed to manage, protect, and grow communities of all sizes.</p>
-            
-            <div class="action-buttons">
-                <a href="https://discord.com/oauth2/authorize?client_id=1514950865960571001&permissions=8866461766385649&integration_type=0&scope=bot" target="_blank" class="btn btn-blurple">Invite Bot</a>
-                <a href="https://discord.gg/UxmPNvSSXp" target="_blank" class="btn btn-secondary">Support Server</a>
-            </div>
-        </header>
-
+        
         <div class="meta-info">
             <div class="last-updated">Last Updated: <strong>June 30, 2026</strong></div>
             <span class="badge-legal">Terms of Service</span>
