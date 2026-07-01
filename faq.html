@@ -1,0 +1,370 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOVACORE — Knowledge Base & Common Inquiries</title>
+    <style>
+        :root {
+            --bg-primary: #171226; /* Dark Purple Slate */
+            --bg-secondary: #211a36; /* Deep Purple Card */
+            --bg-tertiary: #2d244a; /* Lighter Purple accents */
+            --purple-accent: #8a4fff;
+            --text-normal: #e3e1e8;
+            --text-muted: #a6a2b5;
+            --white: #ffffff;
+            --card-border: rgba(138, 79, 255, 0.15);
+            --aqua: #00f5d4;
+            --question-bg: rgba(138, 79, 255, 0.05);
+            --blurple: #5865f2;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            background-image: radial-gradient(circle at top right, rgba(138, 79, 255, 0.1), transparent 40%),
+                              radial-gradient(circle at bottom left, rgba(88, 101, 242, 0.05), transparent 50%);
+            color: var(--text-normal);
+            font-family: 'gg sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding-top: 110px; /* Offset for fixed navbar */
+            padding-bottom: 60px;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        /* Fixed Navigation Bar */
+        .main-navbar {
+            background-color: rgba(33, 26, 54, 0.95);
+            border-bottom: 1px solid var(--card-border);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            width: 90%;
+            margin: 0 auto;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-brand {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--white);
+            text-decoration: none;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .brand-logo-img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(138, 79, 255, 0.4);
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: color 0.2s ease, border-color 0.2s ease;
+            padding: 6px 0;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--aqua);
+        }
+        
+        .nav-link.active {
+            border-color: var(--aqua);
+        }
+
+        .btn-invite {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            background: linear-gradient(135deg, var(--purple-accent), var(--blurple));
+            color: var(--white);
+            box-shadow: 0 4px 14px rgba(138, 79, 255, 0.3);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+            border: none;
+        }
+        .btn-invite:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(138, 79, 255, 0.4);
+        }
+
+        /* Title Box Styling */
+        .main-title-box {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .main-title {
+            font-size: 2.8rem;
+            color: var(--white);
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            background: linear-gradient(to right, var(--white), var(--aqua));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* KB Section Card Layout */
+        .kb-section {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+            margin-bottom: 40px;
+        }
+
+        .kb-list {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .kb-item {
+            background-color: rgba(23, 18, 38, 0.4);
+            border: 1px solid rgba(138, 79, 255, 0.1);
+            border-radius: 12px;
+            padding: 24px;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .kb-item:hover {
+            border-color: rgba(138, 79, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .kb-question {
+            font-size: 1.2rem;
+            color: var(--aqua);
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .kb-question span {
+            color: var(--purple-accent);
+        }
+
+        .kb-answer {
+            color: var(--text-normal);
+            font-size: 1rem;
+            padding-left: 28px;
+            text-align: justify;
+        }
+
+        .kb-answer code {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: var(--bg-tertiary);
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: var(--white);
+            font-size: 0.9rem;
+        }
+
+        footer {
+            margin-top: 60px;
+            text-align: center;
+        }
+        footer p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 8px; }
+
+        @media (max-width: 768px) {
+            body { padding-top: 90px; padding-bottom: 30px; }
+            .nav-menu { gap: 15px; }
+            .nav-link { font-size: 0.9rem; }
+            .btn-invite { padding: 8px 14px; font-size: 0.85rem; }
+            .kb-section { padding: 25px; }
+            .main-title { font-size: 2.2rem; }
+            .kb-answer { padding-left: 0; margin-top: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sticky Navigation Menu Header -->
+    <header class="main-navbar">
+        <div class="nav-container">
+            <a href="https://khizarstar.github.io/bot-pages/novacore.html" class="nav-brand">
+                <img src="bot.png" alt="NovaCore Logo" class="brand-logo-img"> NOVACORE
+            </a>
+            <nav class="nav-menu">
+                <a href="https://khizarstar.github.io/bot-pages/novacore.html" class="nav-link">Home</a>
+                <a href="https://khizarstar.github.io/bot-pages/features.html" class="nav-link">Features</a>
+                <a href="https://khizarstar.github.io/bot-pages/commands.html" class="nav-link">Commands</a>
+                <a href="https://khizarstar.github.io/bot-pages/faq.html" class="nav-link active">FAQ</a>
+            </nav>
+            <div class="nav-actions">
+                <a href="https://discord.com/oauth2/authorize?client_id=1514950865960571001&permissions=8866461766385649&integration_type=0&scope=bot" class="btn btn-invite" target="_blank">Invite Bot</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <div class="main-title-box">
+            <h1 class="main-title">Knowledge Base & Common Inquiries</h1>
+        </div>
+
+        <section class="kb-section">
+            <div class="kb-list">
+
+                <div class="kb-item">
+                    <div class="kb-question"><span>01.</span> How do I invite NovaCore to my Discord server?</div>
+                    <div class="kb-answer">
+                        You can add the bot by clicking the official <strong>Invite Bot</strong> link on our homepage. Ensure you have "Manage Server" or "Administrator" permissions on the target server. For full operational capability, we recommend keeping the default requested permission flags checked during authorization.
+                    </div>
+                </div>
+
+                <div class="kb-item">
+                    <div class="kb-question"><span>02.</span> Why are the slash commands not displaying in my server?</div>
+                    <div class="kb-answer">
+                        If <code>/</code> commands are missing, it is typically because the bot was invited without the proper application command permissions. To fix this, open your Server Settings > Integrations > NovaCore, and verify that the bot has explicit access to use slash commands. If issues persist, re-authorize the bot using our official invite link.
+                    </div>
+                </div>
+
+                <div class="kb-item">
+                    <div class="kb-question"><span>03.</span> How do I change the default settings or logging channels?</div>
+                    <div class="kb-answer">
+                        Execute the <code>/setup</code> command to begin configuring your system variables. This utility launches an interactive layout panel where you can route infraction notifications, welcome messages, join/leave tracking updates, and mod logs to your preferred isolated text channels.
+                    </div>
+                </div>
+
+                <div class="kb-item">
+                    <div class="kb-question"><span>04.</span> Does the AutoMod system protect against malicious links and media?</div>
+                    <div class="kb-answer">
+                        Yes. NovaCore uses advanced internal filters to monitor, catch, and strip phishing targets, unauthorized links, and spam behavior. You can configure precise blocking layers, create safe white-lists, and set up automatic moderation levels by triggering the <code>/automod</code> administrative command dashboard.
+                    </div>
+                </div>
+
+                <div class="kb-item">
+                    <div class="kb-question"><span>05.</span> How does the built-in warning system keep track of infractions?</div>
+                    <div class="kb-answer">
+                        When a moderator executes <code>/warn</code> against an account, NovaCore commits that incident report securely to its internal cloud infrastructure. These records persist even if the user leaves the server. Staff can pull the complete chronological violation log at any time using <code>/warnings</code>.
+                    </div>
+                </div>
+
+                <div class="kb-item">
+                    <div class="kb-question"><span>06.</span> Can I construct customized announcement blocks and embed frameworks?</div>
+                    <div class="kb-answer">
+                        Absolutely. Use the <code>/embed</code> command wizard to design professional layouts without messing with raw JSON strings. The tool allows you to specify customized hex-color borders, insert custom image links, structure footers, and format system descriptions into high-quality textual cards.
+                    </div>
+                </div>
+
+                <div class="kb-item">
+                    <div class="kb-question"><span>07.</span> How do I establish clickable user reaction roles?</div>
+                    <div class="kb-answer">
+                        Run the <code>/reactionroles</code> setup module. The engine will guide you through assigning roles to clear message reaction triggers. Ensure that the integrated role belonging to NovaCore sits higher in your server's role list than the roles it is trying to assign, or it will run into an access error.
+                    </div>
+                </div>
+
+                <div class="kb-item">
+                    <div class="kb-question"><span>08.</span> How does the server level and XP tracking network function?</div>
+                    <div class="kb-answer">
+                        NovaCore logs active conversation metrics across your standard chat channels. Members earn arbitrary experience points (XP) dynamically as they converse. Server owners can customize rewards, configure multipliers, track progression standings via <code>/levels</code>, or block certain channels from giving XP entirely.
+                    </div>
+                </div>
+
+                <div class="kb-item">
+                    <div class="kb-question"><span>09.</span> Are customer support tickets isolated and secure from public eyes?</div>
+                    <div class="kb-answer">
+                        Yes. When an individual initializes a panel room via the <code>/tickets</code> component, NovaCore instantiates a secure, hidden channel visible only to that specific user and your server's designated staff. When a ticket is completed, moderators can save or clear the entire conversation transcript.
+                    </div>
+                </div>
+
+                <div class="kb-item">
+                    <div class="kb-question"><span>10.</span> Can NovaCore stream audio content directly into my voice channels?</div>
+                    <div class="kb-answer">
+                        Yes. By employing our high-fidelity entertainment layer via <code>/music</code> or <code>/radio</code>, users can pipe streaming audio networks directly into active voice rooms. The engine handles queue management, play parameters, volume overrides, and loop scripts.
+                    </div>
+                </div>
+
+                <div class="kb-item">
+                    <div class="kb-question"><span>11.</span> Is user profile data shared across multiple discord servers?</div>
+                    <div class="kb-answer">
+                        No. While global data configurations track bot-wide statistics, specific user profile milestones, server warnings, economy structures, and level metrics remain tightly isolated to your individual server's unique network identification parameters to protect user privacy.
+                    </div>
+                </div>
+
+                <div class="kb-item">
+                    <div class="kb-question"><span>12.</span> What should I do if the bot stops responding to inputs?</div>
+                    <div class="kb-answer">
+                        First, query the system status directly by running <code>/bot</code> to check live latency speeds and hosting metrics. If the bot is completely non-responsive, verify that it has permission to view the channel and read text history. If a global outage occurs, technical updates are posted directly to our Support Server.
+                    </div>
+                </div>
+
+                <div class="kb-item">
+                    <div class="kb-question"><span>13.</span> Can we create custom text macro triggers for our community?</div>
+                    <div class="kb-answer">
+                        Yes. If you need repetitive messaging shortcuts or automated responses for common community needs, you can register and save explicit macro structures through the <code>/custom-commands</code> control module.
+                    </div>
+                </div>
+
+                <div class="kb-item">
+                    <div class="kb-question"><span>14.</span> How do I change or adjust user currency allocations in the economy engine?</div>
+                    <div class="kb-answer">
+                        Administrators can manage virtual server balances directly through the master <code>/economy</code> console. This control layer enables staff to adjust currency values, establish marketplace parameters, reset local leaderboards, or audit user transactional data logs.
+                    </div>
+                </div>
+
+                <div class="kb-item">
+                    <div class="kb-question"><span>15.</span> Where do I submit feature suggestions or bug disclosures?</div>
+                    <div class="kb-answer">
+                        You can route ideas directly through the interactive <code>/suggestions</code> block inside your server, or use the <code>/developers</code> credentials link to access our dedicated system infrastructure, where you can speak to our engineers and open code tickets.
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 <strong>NOVACORE</strong> &mdash; All Rights Reserved.</p>
+            <p>Designed and Authored by <strong>MUHAMMAD KHIZAR</strong> | Hosted via Opticalink</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
