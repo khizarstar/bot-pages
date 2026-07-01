@@ -162,6 +162,365 @@
             transform: translateY(-2px);
         }
 
+        .btn-aqua { 
+            background-color: var(--aqua); 
+            color: #171226; 
+            box-shadow: 0 4px 14px rgba(0, 245, 212, 0.2); 
+        }
+        .btn-aqua:hover { filter: brightness(1.1); transform: translateY(-1px); }
+
+        /* Hero Landing Section */
+        .hero-section {
+            text-align: center;
+            padding: 60px 0;
+            position: relative;
+        }
+
+        .hero-logo-container {
+            margin-bottom: 25px;
+            display: inline-block;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .hero-logo-img {
+            width: 95px;
+            height: 95px;
+            object-fit: contain;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(138, 79, 255, 0.45);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--white);
+            line-height: 1.2;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            background: linear-gradient(to right, var(--white), var(--aqua));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 650px;
+            margin: 0 auto 40px auto;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* Metric Highlights */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 40px 0 60px 0;
+        }
+
+        .metric-card {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .metric-value {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--aqua);
+            margin-bottom: 5px;
+        }
+
+        .metric-label {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Layout Structure Containers */
+        .info-section, .main-content {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+            margin-bottom: 40px;
+        }
+
+        .info-title, .section-title {
+            font-size: 1.8rem;
+            color: var(--white);
+            font-weight: 700;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--bg-tertiary);
+            padding-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-p, p.description-text {
+            font-size: 1.05rem;
+            color: var(--text-normal);
+            margin-bottom: 20px;
+            line-height: 1.7;
+            text-align: justify;
+        }
+
+        .nav-buttons-container {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Contact Area Component */
+        .contact-box {
+            background-color: rgba(138, 79, 255, 0.05);
+            border: 1px solid rgba(138, 79, 255, 0.15);
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .contact-email {
+            display: inline-block;
+            color: var(--aqua);
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            margin-top: 8px;
+            transition: color 0.2s ease;
+        }
+        .contact-email:hover { color: var(--white); }
+
+        .divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--purple-accent), transparent);
+            margin: 40px 0;
+            border: none;
+        }
+
+        .legal-buttons-wrapper {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        /* Structural Footer Layer */
+        footer {
+            margin-top: 60px;
+            text-align: center;
+        }
+        
+        footer p { 
+            color: var(--text-muted); 
+            font-size: 0.9rem; 
+            margin-bottom: 8px; 
+        }
+
+        .footer-policy-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin: 0 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+        .footer-policy-links a:hover { color: var(--aqua); }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 768px) {
+            body { padding-top: 90px; }
+            .nav-menu { gap: 15px; }
+            .nav-link { font-size: 0.9rem; }
+            .btn-invite { padding: 8px 14px; font-size: 0.85rem; }
+            .hero-title { font-size: 2.4rem; }
+            .metrics-grid { grid-template-columns: 1fr; gap: 20px; }
+            .info-section, .main-content { padding: 25px; }
+            .nav-buttons-container { flex-direction: column; gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Unified Fixed Navigation Header -->
+    <header class="main-navbar">
+        <div class="nav-container">
+            <a href="https://khizarstar.github.io/bot-pages/novacore.html" class="nav-brand">
+                <img src="bot.png" alt="NovaCore Logo" class="brand-logo-img"> NOVACORE
+            </a>
+            <nav class="nav-menu">
+                <a href="https://khizarstar.github.io/bot-pages/novacore.html" class="nav-link active">Home</a>
+                <a href="https://khizarstar.github.io/bot-pages/features.html" class="nav-link">Features</a>
+                <a href="https://khizarstar.github.io/bot-pages/commands.html" class="nav-link">Commands</a>
+                <a href="https://khizarstar.github.io/bot-pages/faq.html" class="nav-link">FAQ</a>
+            </nav>
+            <div class="nav-actions">
+                <a href="https://discord.com/oauth2/authorize?client_id=1514950865960571001&permissions=8866461766385649&integration_type=0&scope=bot" class="btn btn-invite" target="_blank">Invite Bot</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <!-- Hero Landing Display Panel -->
+        <section class="hero-section">
+            <div class="hero-logo-container">
+                <img src="bot.png" alt="NovaCore Shield Logo" class="hero-logo-img">
+            </div>
+            <h1 class="hero-title">Next-Gen Server Operations</h1>
+            <p class="hero-subtitle">
+                Supercharge your community ecosystem with automated moderation, detailed metrics tracking, secure customer support tickets, and direct media integration.
+            </p>
+            <div class="hero-cta-group">
+                <a href="https://discord.com/oauth2/authorize?client_id=1514950865960571001&permissions=8866461766385649&integration_type=0&scope=bot" class="btn btn-primary" target="_blank">Add to Discord</a>
+                <a href="https://discord.gg/UxmPNvSSXp" class="btn btn-secondary" target="_blank">Join Support Server</a>
+            </div>
+        </section>
+
+        <!-- Dynamic Network Metrics Grid -->
+        <section class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-value">1.6M+</div>
+                <div class="metric-label">Servers Managed</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">587M+</div>
+                <div class="metric-label">Users Protected</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">99.9%</div>
+                <div class="metric-label">Uptime Execution</div>
+            </div>
+        </section>
+
+        <!-- Showcase Overview Segment -->
+        <section class="info-section">
+            <h2 class="info-title">Why integrate NovaCore?</h2>
+            <p class="info-p">
+                NovaCore delivers top-tier structural security overlays engineered to run fully inside modern Discord server layouts. By migrating all traditional utility modules into advanced interactive application structures, NovaCore removes complex message configuration structures entirely.
+            </p>
+            <p class="info-p">
+                From protecting text channels against malicious phishing coordinates via advanced internal AutoMod scripts to running interactive soundscapes and managing deep customer support portals, everything runs smoothly under a centralized platform architecture.
+            </p>
+        </section>
+
+        <!-- Detailed Corporate Bio Panel -->
+        <main class="main-content">
+            <h2 class="section-title">About NOVACORE</h2>
+            <p class="description-text">
+                NovaCore is a powerful and reliable Discord bot designed to help communities grow, stay organized, and have fun. Featuring advanced moderation tools, customizable automod, giveaways, leveling, utility commands, entertainment features, and much more, NovaCore provides everything your server needs in one place.
+            </p>
+            <p class="description-text">
+                Built with performance and simplicity in mind, NovaCore delivers a smooth experience for both server owners and members. Whether you're managing a small community or a large network, NovaCore helps automate tasks, improve engagement, and create a better Discord experience for everyone.
+            </p>
+
+            <!-- Developer Liaison Desk -->
+            <h2 class="section-title" style="margin-top: 40px;">✉️ Contact Information</h2>
+            <div class="contact-box">
+                <p>Have operational questions, technical concerns, or explicit system feedback? Contact developers directly:</p>
+                <a href="mailto:contact.novacore.bot@gmail.com" class="contact-email">contact.novacore.bot@gmail.com</a>
+            </div>
+
+            <hr class="divider">
+
+            <!-- Compliance Anchors Overlay -->
+            <div class="legal-buttons-wrapper">
+                <div class="nav-buttons-container">
+                    <a href="https://khizarstar.github.io/bot-pages/terms.html" target="_blank" class="btn btn-aqua">📜 Terms of Service</a>
+                    <a href="https://khizarstar.github.io/bot-pages/privacy.html" target="_blank" class="btn btn-aqua">🔒 Privacy Policy</a>
+                </div>
+            </div>
+        </main>
+
+        <!-- Core Verification Footer -->
+        <footer>
+            <p>&copy; 2026 <strong>NOVACORE</strong> &mdash; All Rights Reserved.</p>
+            <p class="footer-policy-links" style="margin: 10px 0 15px 0;">
+                <a href="https://khizarstar.github.io/bot-pages/terms.html">Terms of Service</a> | 
+                <a href="https://khizarstar.github.io/bot-pages/privacy.html">Privacy Policy</a>
+            </p>
+            <p>Designed and Authored by <strong>MUHAMMAD KHIZAR</strong> | Hosted via Opticalink</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
+            border-color: var(--aqua);
+        }
+
+        /* Universal Button Framework */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease, background-color 0.2s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn:active { transform: scale(0.98); }
+        
+        .btn-invite {
+            padding: 10px 20px;
+            font-size: 0.95rem;
+            background: linear-gradient(135deg, var(--purple-accent), var(--blurple));
+            color: var(--white);
+            box-shadow: 0 4px 14px rgba(138, 79, 255, 0.3);
+        }
+        .btn-invite:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(138, 79, 255, 0.4);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--purple-accent), var(--blurple));
+            color: var(--white);
+            padding: 14px 32px;
+            font-size: 1.1rem;
+            box-shadow: 0 6px 20px rgba(138, 79, 255, 0.4);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(138, 79, 255, 0.5);
+        }
+
+        .btn-secondary {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--card-border);
+            color: var(--white);
+            padding: 14px 32px;
+            font-size: 1.1rem;
+        }
+        .btn-secondary:hover {
+            background-color: var(--bg-tertiary);
+            border-color: rgba(138, 79, 255, 0.4);
+            transform: translateY(-2px);
+        }
+
         .btn-purple-accent { 
             background-color: var(--purple-accent); 
             color: var(--white); 
