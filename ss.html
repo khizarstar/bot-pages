@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOVACORE</title>
+    <style>
+        :root {
+            --bg-dark: #05040a;
+            --card-bg: #16122c;
+            --blurple: #5865f2;
+            --text-main: #ffffff;
+            --text-muted: #8e87b2;
+            --cyan: #3fe2c3;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: 40px;
+        }
+
+        .navbar { width: 100%; max-width: 1200px; display: flex; justify-content: space-between; align-items: center; padding: 20px; }
+        .nav-brand { font-weight: 800; font-size: 1.1rem; }
+        .nav-links { display: flex; gap: 25px; list-style: none; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; font-weight: 600; font-size: 0.9rem; }
+        .nav-invite-btn { background-color: var(--blurple); color: white; padding: 8px 18px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.85rem; }
+
+        .hero-container { max-width: 900px; width: 90%; text-align: center; display: flex; flex-direction: column; align-items: center; margin-top: 20px; }
+        
+        /* Specific CSS for the back.png banner */
+        .hero-banner { 
+            width: 100%; 
+            max-width: 900px; 
+            margin-bottom: 20px; 
+            border-radius: 12px;
+            box-shadow: 0 0 30px rgba(88, 101, 242, 0.3);
+        }
+
+        .hero-description { color: var(--text-muted); line-height: 1.7; margin-bottom: 35px; max-width: 700px; }
+        .hero-buttons { display: flex; gap: 15px; margin-bottom: 40px; justify-content: center; flex-wrap: wrap; }
+
+        .btn { padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none; }
+        .btn-blurple { background-color: var(--blurple); color: white; }
+        .btn-gray { background-color: #3c3754; color: white; }
+        .btn-outline { border: 1px solid #3c3754; color: var(--text-muted); }
+
+        .features-grid { width: 100%; max-width: 900px; display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 25px; margin-bottom: 40px; }
+        .feature-card { background-color: var(--card-bg); border-radius: 12px; padding: 30px; border: 1px solid rgba(255, 255, 255, 0.05); }
+        .feature-card h3 { color: white; margin-bottom: 12px; }
+        .feature-card p { color: var(--text-muted); font-size: 0.95rem; }
+
+        .stats-bar { width: 100%; max-width: 900px; display: flex; justify-content: space-around; background: rgba(22, 18, 44, 0.6); padding: 25px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.05); text-align: center; }
+        .stats-bar strong { font-size: 1.25rem; color: var(--cyan); }
+        .stats-bar span { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; }
+
+        footer { width: 100%; text-align: center; padding: 40px 20px 20px 20px; font-size: 0.85rem; color: var(--text-muted); }
+        footer a { color: var(--cyan); text-decoration: none; margin: 0 5px; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-brand">NOVACORE</div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Features</a></li>
+            <li><a href="#">Commands</a></li>
+            <li><a href="#">FAQ</a></li>
+        </ul>
+        <a href="#" class="nav-invite-btn">Invite Bot</a>
+    </nav>
+
+    <main class="hero-container">
+        <!-- Using back.png as the main banner -->
+        <img src="back.png" alt="NOVACORE Banner" class="hero-banner">
+        
+        <p class="hero-description">Power up your community with an all-in-one Discord application matrix. Streamline server management, track leveling loops, enforce deep auto-moderation systems, and play ultra-clear audio channels flawlessly.</p>
+        
+        <div class="hero-buttons">
+            <a href="#" class="btn btn-blurple">Add to Discord</a>
+            <a href="#" class="btn btn-gray">Support Server</a>
+            <a href="#" class="btn btn-outline">Explore Features</a>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card"><h3>Enterprise Security</h3><p>Keep your assets fully locked down with advanced anti-spam layers, regex-based message pattern checks, and proactive anti-nuke safeguards.</p></div>
+            <div class="feature-card"><h3>Gamified Engagement</h3><p>Retain active chat participation via automated role rewards, dynamic leveling progression charts, and mathematically fair giveaway tools.</p></div>
+            <div class="feature-card"><h3>Premium Entertainment</h3><p>Pipe crystal-clear audio tracking engines, full live internet radio networks, and immersive virtual economy casinos straight into your layout.</p></div>
+        </div>
+
+        <div class="stats-bar">
+            <div><strong>150,000+</strong><br><span>Commands Executed</span></div>
+            <div><strong>3,500+</strong><br><span>Servers</span></div>
+            <div><strong>99.9%</strong><br><span>Uptime</span></div>
+            <div><strong>25,000+</strong><br><span>Users</span></div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 <strong>NOVACORE</strong> &mdash; All Rights Reserved.</p>
+        <p>Designed and Authored by <strong>MUHAMMAD KHIZAR</strong> | Hosted via Opticalink</p>
+        <p><a href="#">Terms of Service</a> &bull; <a href="#">Privacy Policy</a> &bull; <a href="#">Community Guidelines</a></p>
+    </footer>
+
+</body>
+</html>
+
