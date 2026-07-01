@@ -35,7 +35,6 @@
             align-items: center;
         }
 
-        /* Top Navbar Structure from Screenshot */
         .navbar {
             width: 100%;
             max-width: 1200px;
@@ -99,7 +98,6 @@
             background-color: var(--blurple-hover);
         }
 
-        /* Main Center Hero Wrapper */
         .hero-container {
             max-width: 800px;
             width: 90%;
@@ -134,11 +132,10 @@
             margin-bottom: 35px;
         }
 
-        /* Button Configuration */
         .hero-buttons {
             display: flex;
             gap: 15px;
-            margin-bottom: 60px;
+            margin-bottom: 40px; /* Reduced to tighten space */
             flex-wrap: wrap;
             justify-content: center;
         }
@@ -160,14 +157,13 @@
         .btn-outline { border: 1px solid var(--btn-secondary); color: var(--text-muted); }
         .btn-outline:hover { background-color: rgba(255, 255, 255, 0.02); color: white; }
 
-        /* Feature Matrix Layout */
         .features-grid {
             width: 100%;
             max-width: 900px;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 25px;
-            margin-bottom: 60px;
+            margin-bottom: 20px; /* Reduced to tighten space */
         }
 
         .feature-card {
@@ -200,8 +196,7 @@
         footer {
             width: 100%;
             text-align: center;
-            padding: 40px 20px;
-            margin-top: auto;
+            padding: 20px; /* Tightened padding */
             font-size: 0.85rem;
             color: var(--text-muted);
             border-top: 1px solid rgba(255, 255, 255, 0.02);
@@ -221,7 +216,6 @@
 </head>
 <body>
 
-    <!-- Top Navigation Bar Layout -->
     <nav class="navbar">
         <div class="nav-brand">
             <img src="bot.png" alt="NOVACORE">
@@ -236,7 +230,6 @@
         <a href="https://discord.com/oauth2/authorize?client_id=1514950865960571001&permissions=8866461766385649&integration_type=0&scope=bot" target="_blank" class="nav-invite-btn">Invite Bot</a>
     </nav>
 
-    <!-- Main View Content -->
     <div class="hero-container">
         <img src="bot.png" alt="NOVACORE Logo" class="main-bot-icon">
         <h1 class="hero-title">NOVACORE</h1>
@@ -275,4 +268,3 @@
 
 </body>
 </html>
-
