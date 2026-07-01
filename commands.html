@@ -16,6 +16,7 @@
             --card-border: rgba(138, 79, 255, 0.15);
             --aqua: #00f5d4;
             --command-bg: rgba(138, 79, 255, 0.08);
+            --blurple: #5865f2;
         }
 
         * {
@@ -31,7 +32,8 @@
             color: var(--text-normal);
             font-family: 'gg sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            padding: 60px 0;
+            padding-top: 110px; /* Offset for fixed navbar */
+            padding-bottom: 60px;
         }
 
         .container {
@@ -40,6 +42,93 @@
             margin: 0 auto;
         }
 
+        /* Fixed Navigation Bar */
+        .main-navbar {
+            background-color: rgba(33, 26, 54, 0.95);
+            border-bottom: 1px solid var(--card-border);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            width: 90%;
+            margin: 0 auto;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-brand {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--white);
+            text-decoration: none;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .brand-logo-img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(138, 79, 255, 0.4);
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: color 0.2s ease, border-color 0.2s ease;
+            padding: 6px 0;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--aqua);
+        }
+        
+        .nav-link.active {
+            border-color: var(--aqua);
+        }
+
+        .btn-invite {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            background: linear-gradient(135deg, var(--purple-accent), var(--blurple));
+            color: var(--white);
+            box-shadow: 0 4px 14px rgba(138, 79, 255, 0.3);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+            border: none;
+        }
+        .btn-invite:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(138, 79, 255, 0.4);
+        }
+
+        /* Title Box Styling */
         .main-title-box {
             text-align: center;
             margin-bottom: 50px;
@@ -56,6 +145,7 @@
             -webkit-text-fill-color: transparent;
         }
 
+        /* Category Card Layout */
         .category-section {
             background-color: var(--bg-secondary);
             border: 1px solid var(--card-border);
@@ -123,13 +213,33 @@
         footer p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 8px; }
 
         @media (max-width: 768px) {
-            body { padding: 30px 0; }
+            body { padding-top: 90px; padding-bottom: 30px; }
+            .nav-menu { gap: 15px; }
+            .nav-link { font-size: 0.9rem; }
+            .btn-invite { padding: 8px 14px; font-size: 0.85rem; }
             .category-section { padding: 25px; }
             .main-title { font-size: 2.2rem; }
         }
     </style>
 </head>
 <body>
+
+    <header class="main-navbar">
+        <div class="nav-container">
+            <a href="https://khizarstar.github.io/bot-pages/novacore.html" class="nav-brand">
+                <img src="bot.png" alt="NovaCore Logo" class="brand-logo-img"> NOVACORE
+            </a>
+            <nav class="nav-menu">
+                <a href="https://khizarstar.github.io/bot-pages/novacore.html" class="nav-link">Home</a>
+                <a href="https://khizarstar.github.io/bot-pages/features.html" class="nav-link">Features</a>
+                <a href="https://khizarstar.github.io/bot-pages/commands.html" class="nav-link active">Commands</a>
+                <a href="https://khizarstar.github.io/bot-pages/faq.html" class="nav-link">FAQ</a>
+            </nav>
+            <div class="nav-actions">
+                <a href="https://discord.com/oauth2/authorize?client_id=1514950865960571001&permissions=8866461766385649&integration_type=0&scope=bot" class="btn btn-invite" target="_blank">Invite Bot</a>
+            </div>
+        </div>
+    </header>
 
     <div class="container">
         
@@ -335,532 +445,6 @@
                 <div class="command-item">
                     <span class="command-name">/soundboard</span>
                     <span class="command-desc">Triggers structural sound configurations and playback tools within connected server voice streams.</span>
-                </div>
-            </div>
-        </section>
-
-        <section class="category-section">
-            <h2 class="category-title">ℹ️ Bot System Info</h2>
-            <div class="command-list">
-                <div class="command-item">
-                    <span class="command-name">/help</span>
-                    <span class="command-desc">Displays an overview of all accessible module groupings along with diagnostic details on how to inspect specific options.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/bot</span>
-                    <span class="command-desc">Provides an absolute diagnostic update showing technical ping speeds, hosting runtime statistics, and build updates.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/developers</span>
-                    <span class="command-desc">Credits the core engineering team and shows links to official project contributions and support.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/guild</span>
-                    <span class="command-desc">Exposes explicit infrastructure credentials, localized settings, and server identity codes for troubleshooting.</span>
-                </div>
-            </div>
-        </section>
-
-        <footer>
-            <p>&copy; 2026 <strong>NOVACORE</strong> &mdash; All Rights Reserved.</p>
-            <p>Designed and Authored by <strong>MUHAMMAD KHIZAR</strong> | Hosted via Opticalink</p>
-        </footer>
-
-    </div>
-
-</body>
-</html>
-            padding: 3px 10px;
-            border-radius: 6px;
-            width: fit-content;
-        }
-
-        .command-desc {
-            color: var(--text-normal);
-            font-size: 0.98rem;
-            padding-left: 4px;
-        }
-
-        footer {
-            margin-top: 60px;
-            text-align: center;
-        }
-        footer p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 8px; }
-        footer a { color: #8a4fff; text-decoration: none; font-weight: 600; }
-        footer a:hover { text-decoration: underline; }
-
-        @media (max-width: 768px) {
-            body { padding: 30px 0; }
-            .category-section { padding: 25px; }
-            .main-title { font-size: 2.2rem; }
-        }
-    </style>
-</head>
-<body>
-
-    <div class="container">
-        
-        <div class="main-title-box">
-            <h1 class="main-title">Nova core commands</h1>
-        </div>
-
-        <section class="category-section">
-            <h2 class="category-title">🛡️ Moderation & Safety</h2>
-            <div class="command-list">
-                <div class="command-item">
-                    <span class="command-name">/moderation</span>
-                    <span class="command-desc">Opens the main core moderation interface to log community punishments, manage user bans, and review server safety layers.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/automod</span>
-                    <span class="command-desc">Configures the automatic content filters, anti-spam configurations, and custom blocklists to secure your channels automatically.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/warn</span>
-                    <span class="command-desc">Issues a formal security warning to a user, logging it directly into their database moderation profile history.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/unwarn</span>
-                    <span class="command-desc">Removes an active warning entry from a specified member, reducing their current punishment tier score.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/warnings</span>
-                    <span class="command-desc">Queries the internal storage network to list all chronological server infractions and notes logged against a user account.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/report</span>
-                    <span class="command-desc">Provides a secure reporting utility for members to safely flag rules violations directly to a hidden staff review room.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/stickymessages</span>
-                    <span class="command-desc">Pins an essential message tightly to the bottom of a specific channel, ensuring it automatically updates over active conversations.</span>
-                </div>
-            </div>
-        </section>
-
-        <section class="category-section">
-            <h2 class="category-title">⚙️ Administration & Setup</h2>
-            <div class="command-list">
-                <div class="command-item">
-                    <span class="command-name">/setup</span>
-                    <span class="command-desc">Launches the master interactive server setup utility to bind core channels, tracking features, and bot logging modules.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/config</span>
-                    <span class="command-desc">Opens a secure administrative dashboard to modify background feature switches and edit default module values.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/autosetup</span>
-                    <span class="command-desc">Instantly deploys optimized preset server categories, voice configurations, and basic standard moderation channels.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/custom-commands</span>
-                    <span class="command-desc">Enables staff teams to design and register specific trigger macros that instantly return custom server response designs.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/announcement</span>
-                    <span class="command-desc">Formats professional network broadcast frames with clean layouts to communicate major updates or developer schedules.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/reactionroles</span>
-                    <span class="command-desc">Binds automated server identity roles to visual message reaction elements, enabling users to click to choose preferences.</span>
-                </div>
-            </div>
-        </section>
-
-        <section class="category-section">
-            <h2 class="category-title">📊 Utility & Statistics</h2>
-            <div class="command-list">
-                <div class="command-item">
-                    <span class="command-name">/userinfo</span>
-                    <span class="command-desc">Fetches precise individual account info, including exact platform entry dates, snowflake IDs, and active server roles.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/profile</span>
-                    <span class="command-desc">Generates a customized user profile showcase card with tracking milestones, level standings, and social status tags.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/bot-profile</span>
-                    <span class="command-desc">Displays the public utility identification parameters, authorization credentials, and profile specifications of NovaCore.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/serverstats</span>
-                    <span class="command-desc">Compiles detailed numeric dashboard updates outlining total account numbers, online member counts, and general server health.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/embed</span>
-                    <span class="command-desc">Opens an interactive visual builder to construct custom message arrays, design layout borders, and post professional text cards.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/tickets</span>
-                    <span class="command-desc">Deploys an independent, secure customer service panel where members can instantiate hidden rooms to get help from team moderators.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/suggestions</span>
-                    <span class="command-desc">Creates a designated feedback collection hub allowing server members to enter ideas and submit real-time structural votes.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/search</span>
-                    <span class="command-desc">Runs automated background searches across systemic database lines to extract explicit knowledge bases without opening a web browser.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/tools</span>
-                    <span class="command-desc">Opens an all-in-one menu filled with operational formatting guides, server checking scripts, and standard analytical units.</span>
-                </div>
-            </div>
-        </section>
-
-        <section class="category-section">
-            <h2 class="category-title">📈 Metrics & Engagement</h2>
-            <div class="command-list">
-                <div class="command-item">
-                    <span class="command-name">/levels</span>
-                    <span class="command-desc">Compiles the formal server activity hierarchy, grading total message counts into structured score boards.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/giveaway</span>
-                    <span class="command-desc">Launches a standalone setup wizard to organize prize giveaways, manage operational countdown durations, and select drawing winners.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/message</span>
-                    <span class="command-desc">Checks text data entries to report on specific individual message counts within standard community chats.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/messages</span>
-                    <span class="command-desc">Displays the complete server analytics log tracking the overall message metrics across every active text channel.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/invite</span>
-                    <span class="command-desc">Creates safe, optimized connection links tracking back to specific invite generation modules.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/invites</span>
-                    <span class="command-desc">Audits the database system to confirm total registration conversions driven by specific staff or user invite references.</span>
-                </div>
-            </div>
-        </section>
-
-        <section class="category-section">
-            <h2 class="category-title">🎮 Fun & Entertainment</h2>
-            <div class="command-list">
-                <div class="command-item">
-                    <span class="command-name">/fun</span>
-                    <span class="command-desc">Displays a diverse catalog of casual textual scripts, humorous response phrases, and chat mini-games to break the ice.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/games</span>
-                    <span class="command-desc">Launches dynamic chat mini-games complete with automated logic scoring tracking built right into your channel.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/casino</span>
-                    <span class="command-desc">Allows users to test their luck in simulated gaming modules using their virtual server currency balances.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/economy</span>
-                    <span class="command-desc">Brings up the virtual banking interface where users check wallet assets, evaluate marketplace parameters, and wire funds.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/images</span>
-                    <span class="command-desc">Applies creative graphical layers, photo mutations, and meme templates to specific user profile photos instantly.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/activities</span>
-                    <span class="command-desc">Integrates dedicated platform game applications directly inside an active Discord voice channel environment.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/family</span>
-                    <span class="command-desc">Simulates fun relationship bonds, marriages, and user connections within your server's casual meta-community.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/birthdays</span>
-                    <span class="command-desc">Logs and keeps track of user birthday milestones to automate celebratory messages when their date rolls around.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/music</span>
-                    <span class="command-desc">Gives users control over high-fidelity audio streams, track requests, and queue systems in voice channels.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/radio</span>
-                    <span class="command-desc">Hooks live broadcast internet radio signals into any voice room for continuous background music.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/afk</span>
-                    <span class="command-desc">Flags a user profile as away, instantly notifying any members who mention them with an automated notice.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/notepad</span>
-                    <span class="command-desc">Provides a small, secure text workspace where users can save personal notes, links, or text logs within the bot.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/thanks</span>
-                    <span class="command-desc">Sends formal appreciation notifications to helpful users, tracking total community gratitude tokens.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/voice</span>
-                    <span class="command-desc">Allows members to easily adjust parameters, user caps, and permissions on their temporary custom voice lobbies.</span>
-                </div>
-            </div>
-        </section>
-
-        <section class="category-section">
-            <h2 class="category-title">ℹ️ Bot System Info</h2>
-            <div class="command-list">
-                <div class="command-item">
-                    <span class="command-name">/help</span>
-                    <span class="command-desc">Displays an overview of all accessible module groupings along with diagnostic details on how to inspect specific options.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/bot</span>
-                    <span class="command-desc">Provides an absolute diagnostic update showing technical ping speeds, hosting runtime statistics, and build updates.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/developers</span>
-                    <span class="command-desc">Credits the core engineering team and shows links to official project contributions and support.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/guild</span>
-                    <span class="command-desc">Exposes explicit infrastructure credentials, localized settings, and server identity codes for troubleshooting.</span>
-                </div>
-            </div>
-        </section>
-
-        <footer>
-            <p>&copy; 2026 <strong>NOVACORE</strong> &mdash; All Rights Reserved.</p>
-            <p>Designed and Authored by <strong>MUHAMMAD KHIZAR</strong> | Hosted via Opticalink</p>
-        </footer>
-
-    </div>
-
-</body>
-</html>
-            padding: 3px 10px;
-            border-radius: 6px;
-            width: fit-content;
-        }
-
-        .command-desc {
-            color: var(--text-normal);
-            font-size: 0.98rem;
-            padding-left: 4px;
-        }
-
-        footer {
-            margin-top: 60px;
-            text-align: center;
-        }
-        footer p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 8px; }
-        footer a { color: #8a4fff; text-decoration: none; font-weight: 600; }
-        footer a:hover { text-decoration: underline; }
-
-        @media (max-width: 768px) {
-            body { padding: 30px 0; }
-            .category-section { padding: 25px; }
-            .main-title { font-size: 2.2rem; }
-        }
-    </style>
-</head>
-<body>
-
-    <div class="container">
-        
-        <div class="main-title-box">
-            <h1 class="main-title">Nova core commands</h1>
-        </div>
-
-        <section class="category-section">
-            <h2 class="category-title">🛡️ Moderation & Safety</h2>
-            <div class="command-list">
-                <div class="command-item">
-                    <span class="command-name">/moderation</span>
-                    <span class="command-desc">Opens the main core moderation interface to log community punishments, manage user bans, and review server safety layers.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/automod</span>
-                    <span class="command-desc">Configures the automatic content filters, anti-spam configurations, and custom blocklists to secure your channels automatically.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/warn</span>
-                    <span class="command-desc">Issues a formal security warning to a user, logging it directly into their database moderation profile history.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/unwarn</span>
-                    <span class="command-desc">Removes an active warning entry from a specified member, reducing their current punishment tier score.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/warnings</span>
-                    <span class="command-desc">Queries the internal storage network to list all chronological server infractions and notes logged against a user account.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/report</span>
-                    <span class="command-desc">Provides a secure reporting utility for members to safely flag rules violations directly to a hidden staff review room.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/stickymessages</span>
-                    <span class="command-desc">Pins an essential message tightly to the bottom of a specific channel, ensuring it automatically updates over active conversations.</span>
-                </div>
-            </div>
-        </section>
-
-        <section class="category-section">
-            <h2 class="category-title">⚙️ Administration & Setup</h2>
-            <div class="command-list">
-                <div class="command-item">
-                    <span class="command-name">/setup</span>
-                    <span class="command-desc">Launches the master interactive server setup utility to bind core channels, tracking features, and bot logging modules.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/config</span>
-                    <span class="command-desc">Opens a secure administrative dashboard to modify background feature switches and edit default module values.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/autosetup</span>
-                    <span class="command-desc">Instantly deploys optimized preset server categories, voice configurations, and basic standard moderation channels.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/custom-commands</span>
-                    <span class="command-desc">Enables staff teams to design and register specific trigger macros that instantly return custom server response designs.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/announcement</span>
-                    <span class="command-desc">Formats professional network broadcast frames with clean layouts to communicate major updates or developer schedules.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/reactionroles</span>
-                    <span class="command-desc">Binds automated server identity roles to visual message reaction elements, enabling users to click to choose preferences.</span>
-                </div>
-            </div>
-        </section>
-
-        <section class="category-section">
-            <h2 class="category-title">📊 Utility & Statistics</h2>
-            <div class="command-list">
-                <div class="command-item">
-                    <span class="command-name">/userinfo</span>
-                    <span class="command-desc">Fetches precise individual account info, including exact platform entry dates, snowflake IDs, and active server roles.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/profile</span>
-                    <span class="command-desc">Generates a customized user profile showcase card with tracking milestones, level standings, and social status tags.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/bot-profile</span>
-                    <span class="command-desc">Displays the public utility identification parameters, authorization credentials, and profile specifications of NovaCore.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/serverstats</span>
-                    <span class="command-desc">Compiles detailed numeric dashboard updates outlining total account numbers, online member counts, and general server health.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/embed</span>
-                    <span class="command-desc">Opens an interactive visual builder to construct custom message arrays, design layout borders, and post professional text cards.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/tickets</span>
-                    <span class="command-desc">Deploys an independent, secure customer service panel where members can instantiate hidden rooms to get help from team moderators.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/suggestions</span>
-                    <span class="command-desc">Creates a designated feedback collection hub allowing server members to enter ideas and submit real-time structural votes.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/search</span>
-                    <span class="command-desc">Runs automated background searches across systemic database lines to extract explicit knowledge bases without opening a web browser.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/tools</span>
-                    <span class="command-desc">Opens an all-in-one menu filled with operational formatting guides, server checking scripts, and standard analytical units.</span>
-                </div>
-            </div>
-        </section>
-
-        <section class="category-section">
-            <h2 class="category-title">📈 Metrics & Engagement</h2>
-            <div class="command-list">
-                <div class="command-item">
-                    <span class="command-name">/levels</span>
-                    <span class="command-desc">Compiles the formal server activity hierarchy, grading total message counts into structured score boards.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/giveaway</span>
-                    <span class="command-desc">Launches a standalone setup wizard to organize prize giveaways, manage operational countdown durations, and select drawing winners.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/message</span>
-                    <span class="command-desc">Checks text data entries to report on specific individual message counts within standard community chats.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/messages</span>
-                    <span class="command-desc">Displays the complete server analytics log tracking the overall message metrics across every active text channel.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/invite</span>
-                    <span class="command-desc">Creates safe, optimized connection links tracking back to specific invite generation modules.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/invites</span>
-                    <span class="command-desc">Audits the database system to confirm total registration conversions driven by specific staff or user invite references.</span>
-                </div>
-            </div>
-        </section>
-
-        <section class="category-section">
-            <h2 class="category-title">🎮 Fun & Entertainment</h2>
-            <div class="command-list">
-                <div class="command-item">
-                    <span class="command-name">/fun</span>
-                    <span class="command-desc">Displays a diverse catalog of casual textual scripts, humorous response phrases, and chat mini-games to break the ice.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/games</span>
-                    <span class="command-desc">Launches dynamic chat mini-games complete with automated logic scoring tracking built right into your channel.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/casino</span>
-                    <span class="command-desc">Allows users to test their luck in simulated gaming modules using their virtual server currency balances.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/economy</span>
-                    <span class="command-desc">Brings up the virtual banking interface where users check wallet assets, evaluate marketplace parameters, and wire funds.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/images</span>
-                    <span class="command-desc">Applies creative graphical layers, photo mutations, and meme templates to specific user profile photos instantly.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/activities</span>
-                    <span class="command-desc">Integrates dedicated platform game applications directly inside an active Discord voice channel environment.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/family</span>
-                    <span class="command-desc">Simulates fun relationship bonds, marriages, and user connections within your server's casual meta-community.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/birthdays</span>
-                    <span class="command-desc">Logs and keeps track of user birthday milestones to automate celebratory messages when their date rolls around.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/music</span>
-                    <span class="command-desc">Gives users control over high-fidelity audio streams, track requests, and queue systems in voice channels.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/radio</span>
-                    <span class="command-desc">Hooks live broadcast internet radio signals into any voice room for continuous background music.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/afk</span>
-                    <span class="command-desc">Flags a user profile as away, instantly notifying any members who mention them with an automated notice.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/notepad</span>
-                    <span class="command-desc">Provides a small, secure text workspace where users can save personal notes, links, or text logs within the bot.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/thanks</span>
-                    <span class="command-desc">Sends formal appreciation notifications to helpful users, tracking total community gratitude tokens.</span>
-                </div>
-                <div class="command-item">
-                    <span class="command-name">/voice</span>
-                    <span class="command-desc">Allows members to easily adjust parameters, user caps, and permissions on their temporary custom voice lobbies.</span>
                 </div>
             </div>
         </section>
